@@ -1,0 +1,34 @@
+
+
+The core of org.apache.commons.lang3.text.translate is a HashMap<CharSequence, CharSequence> lookupMap.
+From the Javadoc of CharSequence (emphasis mine):
+
+This interface does not refine the general contracts of the equals and hashCode methods. The result of comparing two objects that implement CharSequence is therefore, in general, undefined. Each object may be implemented by a different class, and there is no guarantee that each class will be capable of testing its instances for equality with those of the other. It is therefore inappropriate to use arbitrary CharSequence instances as elements in a set or as keys in a map.
+The current implementation causes code such as the following to not work as expected:
+
+CharSequence cs1 = "1 < 2";
+CharSequence cs2 = CharBuffer.wrap("1 < 2".toCharArray());
+
+System.out.println(StringEscapeUtils.ESCAPE_HTML4.translate(cs1));
+System.out.println(StringEscapeUtils.ESCAPE_HTML4.translate(cs2));
+
+
+... which gives the following results (but should be identical):
+
+1 &lt; 2
+1 < 2
+
+
+The problem, at a minimum, is that CharBuffer.equals is even documented in the Javadoc that:
+
+A char buffer is not equal to any other type of object.
+... so a lookup on a CharBuffer in the Map will always fail when compared against the String implementations that it contains.
+An obvious work-around is to instead use something along the lines of either of the following:
+
+System.out.println(StringEscapeUtils.ESCAPE_HTML4.translate(cs2.toString()));
+System.out.println(StringEscapeUtils.escapeHtml4(cs2.toString()));
+
+
+... which forces everything back to a String.  However, this is not practical when working with large sets of data, which would require significant heap allocations and garbage collection concerns.  (As such, I was actually trying to use the translate method that outputs to a Writer - but simplified the above examples to omit this.)
+Another option that I'm considering is to use a custom CharSequence wrapper around a char[] that implements hashCode() and equals() to work with those implemented on String.  (However, this will be interesting due to the symmetric assumption - which is further interesting that String.equals is currently implemented using instanceof - even though String is final...)
+

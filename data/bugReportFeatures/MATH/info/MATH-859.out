@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe conclusion from [1] was never implemented. We should deprecate these\nproperties from the RealDistribution interface, but since removal\nwill have to wait until 4.0, we should agree on a precise\ndefinition and fix the code to match it in the mean time.\nThe definition that I propose is that isSupportXxxInclusive means\nthat when the density function is applied to the upper or lower\nbound of support returned by getSupportXxxBound, a finite (i.e. not\ninfinite), not NaN value is returned.\n[1] http://markmail.org/message/dxuxh7eybl7xejde\n\n", 
+	"remain":"\n\nThe conclusion from [1] was never implemented. We should deprecate these\nproperties from the RealDistribution interface, but since removal\nwill have to wait until 4.0, we should agree on a precise\ndefinition and fix the code to match it in the mean time.\nThe definition that I propose is that isSupportXxxInclusive means\nthat when the density function is applied to the upper or lower\nbound of support returned by getSupportXxxBound, a finite (i.e. not\ninfinite), not NaN value is returned.\n[1] http://markmail.org/message/dxuxh7eybl7xejde\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

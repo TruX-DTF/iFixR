@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nInvoking SummaryStatistics.setVarianceImpl(new Variance(true/false) makes getStandardDeviation produce NaN. The code to reproduce it:\n\nint[] scores = {1, 2, 3, 4};\nSummaryStatistics stats = new SummaryStatistics();\nstats.setVarianceImpl(new Variance(false)); //use \"population variance\"\nfor(int i : scores) {\n  stats.addValue(i);\n}\ndouble sd = stats.getStandardDeviation();\nSystem.out.println(sd);\n\n\nA workaround suggested by Mikkel is:\n\n  double sd = FastMath.sqrt(stats.getSecondMoment() / stats.getN());\n\n\n\n", 
+	"remain":"\n\nInvoking SummaryStatistics.setVarianceImpl(new Variance(true/false) makes getStandardDeviation produce NaN. The code to reproduce it:\n\nstats.setVarianceImpl(new Variance(false)); //use \"population variance\"\nfor(int i : scores) {\n}\nSystem.out.println(sd);\n\n\nA workaround suggested by Mikkel is:\n\n", 
+	"source":"int[] scores = {1, 2, 3, 4};\nSummaryStatistics stats = new SummaryStatistics();\nfor(int i : scores) {\n  stats.addValue(i);\n}\ndouble sd = stats.getStandardDeviation();\nSystem.out.println(sd);\n  double sd = FastMath.sqrt(stats.getSecondMoment() / stats.getN());", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

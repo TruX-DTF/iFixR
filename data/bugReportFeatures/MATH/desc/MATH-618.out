@@ -1,0 +1,12 @@
+
+
+For both Complex add and subtract, the javadoc states that
+
+     * If either this or <code>rhs</code> has a NaN value in either part,
+     * {@link #NaN} is returned; otherwise Inifinite and NaN values are
+     * returned in the parts of the result according to the rules for
+     * {@link java.lang.Double} arithmetic
+
+
+Subtract includes an isNaN test and returns Complex.NaN if either complex argument isNaN; but add omits this test.  The test should be added to the add implementation (actually restored, since this looks like a code merge problem going back to 1.1).
+

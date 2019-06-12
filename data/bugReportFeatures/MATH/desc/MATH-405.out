@@ -1,0 +1,4 @@
+
+
+Levenberg-Marquardt (its method doOptimize) returns a VectorialPointValuePair.  However, the class holds the optimum point, the vector of the objective function, the cost and residuals.  The value returns by doOptimize does not always corresponds to the point which leads to the residuals and cost
+

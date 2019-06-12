@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nTry to truncate 2004-10-31 01:00:00 MDT by hour and you'll actually get 2004-10-\n31 01:00:00 MST, which is one hour after the input hour.\n    // truncate 2004-10-31 01:00:00 MDT\n    Date oct31_01MDT = new Date(1099206000000L);    \n    Date result = DateUtils.truncate(oct31_01MDT, Calendar.HOUR_OF_DAY);\n    assertEquals(oct31_01MDT, result);\n\n", 
+	"remain":"\n\nTry to truncate 2004-10-31 01:00:00 MDT by hour and you'll actually get 2004-10-\n31 01:00:00 MST, which is one hour after the input hour.\n    Date oct31_01MDT = new Date(1099206000000L);    \n    assertEquals(oct31_01MDT, result);\n", 
+	"source":"// truncate 2004-10-31 01:00:00 MDT\n\n    Date result = DateUtils.truncate(oct31_01MDT, Calendar.HOUR_OF_DAY);\n    assertEquals(oct31_01MDT, result);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

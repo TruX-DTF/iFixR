@@ -1,0 +1,5 @@
+java:
+    7home:  /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/Contents/Home
+    8home:  /Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home
+defects4j:
+    home:  /Users/projects/defects4j/

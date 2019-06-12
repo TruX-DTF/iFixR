@@ -1,0 +1,12 @@
+
+
+If Javascripts including'/', IE will parse the scripts uncorrectly, actually '/' should be escaped to '\/'.
+For example, document.getElementById("test").value = '<script>alert(\'aaa\');</script>';this expression will make IE render page uncorrect, it should be document.getElementById("test").value = '<script>alert(\'aaa\');<\/script>';
+Btw, Spring's JavascriptEscape behavor is correct.
+Try  to run below codes, you will find the difference:
+  String s = "<script>alert('aaa');</script>";
+  String str = org.springframework.web.util.JavaScriptUtils.javaScriptEscape(s);
+  System.out.println("Spring JS Escape : "+str);
+  str = org.apache.commons.lang.StringEscapeUtils.escapeJavaScript(s);
+  System.out.println("Apache Common Lang JS Escape : "+ str);
+

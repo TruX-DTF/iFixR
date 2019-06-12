@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nTry\n\n \nStringUtils.join(new Object[]{\n        new Object() {\n          @Override\n          public String toString() {\n            return null;\n          }\n        }\n    }, ',');\n\n\nToString should probably never return null, but it does in javax.mail.internet.InternetAddress\n\n", 
+	"remain":"\n\nTry\n\n \nStringUtils.join(new Object[]{\n          public String toString() {\n        }\n    }, ',');\n\n\nToString should probably never return null, but it does in javax.mail.internet.InternetAddress\n", 
+	"source":"new Object() {\n          @Override\n          public String toString() {\n            return null;\n          }\n        }", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

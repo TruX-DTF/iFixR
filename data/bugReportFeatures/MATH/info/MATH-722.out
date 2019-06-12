@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nHi,\nIn Complex.java the tanh is computed with the following formula:\ntanh(a + bi) = sinh(2a)/(cosh(2a)+cos(2b)) + [sin(2b)/(cosh(2a)+cos(2b))]i\nThe problem that I'm finding is that as soon as \"a\" is a \"big\" number,\nboth sinh(2a) and cosh(2a) are infinity and then the method tanh returns in\nthe real part NaN (infinity/infinity) when it should return 1.0.\nWouldn't it be appropiate to add something as in the FastMath library??:\nif (real>20.0){\n      return createComplex(1.0, 0.0);\n}\nif (real<-20.0){\n      return createComplex(-1.0, 0.0);\n}\nBest regards,\nJBB\n\n", 
+	"remain":"\n\nHi,\nIn Complex.java the tanh is computed with the following formula:\ntanh(a + bi) = sinh(2a)/(cosh(2a)+cos(2b)) + [sin(2b)/(cosh(2a)+cos(2b))]i\nThe problem that I'm finding is that as soon as \"a\" is a \"big\" number,\nboth sinh(2a) and cosh(2a) are infinity and then the method tanh returns in\nthe real part NaN (infinity/infinity) when it should return 1.0.\nWouldn't it be appropiate to add something as in the FastMath library??:\n}\n      return createComplex(-1.0, 0.0);\nBest regards,\nJBB\n", 
+	"source":"if (real>20.0){\n      return createComplex(1.0, 0.0);\n}\nif (real<-20.0){\n      return createComplex(-1.0, 0.0);\n}", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

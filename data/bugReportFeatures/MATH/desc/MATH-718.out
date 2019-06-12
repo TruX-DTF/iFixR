@@ -1,0 +1,7 @@
+
+
+The inverseCumulativeProbability method of the BinomialDistributionImpl class returns wrong value for large trials.  Following code will be reproduce the problem.
+System.out.println(new BinomialDistributionImpl(1000000, 0.5).inverseCumulativeProbability(0.5));
+This returns 499525, though it should be 499999.
+I'm not sure how it should be fixed, but the cause is that the cumulativeProbability method returns Infinity, not NaN.  As the result the checkedCumulativeProbability method doesn't work as expected.
+

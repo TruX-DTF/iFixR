@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe test at the beginning of MathUtils.gcd(u, v) for arguments equal to zero fails when u and v contain high enough powers of 2 so that their product overflows to zero.\n        assertEquals(3 * (1<<15), MathUtils.gcd(3 * (1<<20), 9 * (1<<15)));\nFix: Replace the test at the start of MathUtils.gcd()\n        if (u * v == 0) {\nby\n        if (u == 0 || v == 0) {\n\n", 
+	"remain":"\n\nThe test at the beginning of MathUtils.gcd(u, v) for arguments equal to zero fails when u and v contain high enough powers of 2 so that their product overflows to zero.\nFix: Replace the test at the start of MathUtils.gcd()\nby\n        if (u == 0 || v == 0) {\n", 
+	"source":"assertEquals(3 * (1<<15), MathUtils.gcd(3 * (1<<20), 9 * (1<<15)));\n        if (u * v == 0) {\n        if (u == 0 || v == 0) {", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

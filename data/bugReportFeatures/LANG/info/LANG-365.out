@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe method BooleanUtils.toBoolean() has a case statement; case 3 drops through to case 4; this can cause StringIndexOutOfBoundsException, for example with the test:\nassertEquals(false, BooleanUtils.toBoolean(\"tru\"));\nThe end of case 3 should return false.\nPatch to follow for source and unit test.\n\n", 
+	"remain":"\n\nThe method BooleanUtils.toBoolean() has a case statement; case 3 drops through to case 4; this can cause StringIndexOutOfBoundsException, for example with the test:\nThe end of case 3 should return false.\nPatch to follow for source and unit test.\n", 
+	"source":"assertEquals(false, BooleanUtils.toBoolean(\"tru\"));", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

@@ -1,0 +1,24 @@
+
+
+Commons Lang 2.4 StringEscapeUtils.escapeJava(String) now escapes '/' characters, which is not a valid "escapable" character in Java strings.  I haven't tried the other Java escape/unescape methods to see if they have a similar problem, or that only Java "escapable" characters are escaped by escapeJava(String).
+This bug may have appeared as an unintended side-effect of the fix for LANG-363.
+Also the javadoc for escapeJava is now a little off, in that '/' should now be included in the sentence describing the differences between Java and Javascript strings, with respect to escaping rules.
+The following is a JUnit3 test demonstrating the bug.
+import junit.framework.TestCase;
+import org.apache.commons.lang.StringEscapeUtils;
+public class StringEscapeUtilsTest extends TestCase {
+    public void testEscapeJavaWithSlash() 
+{
+        final String input = "String with a slash (/) in it";
+        
+        final String expected = input;
+        final String actual   = StringEscapeUtils.escapeJava( input );
+
+        /**
+         * In 2.4 StringEscapeUtils.escapeJava(String) escapes '/' characters,
+         * which are not a valid character to escape in a Java string.  
+         */
+        assertEquals( expected, actual );
+    }
+}
+

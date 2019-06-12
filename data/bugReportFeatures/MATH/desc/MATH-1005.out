@@ -1,0 +1,6 @@
+
+
+When MathArrays.linearCombination is passed arguments with length 1, it throws an ArrayOutOfBoundsException. This is caused by this line:
+double prodHighNext = prodHigh[1];
+linearCombination should check the length of the arguments and fall back to simple multiplication if length == 1.
+

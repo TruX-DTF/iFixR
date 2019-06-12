@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nNumberUtils createNumber throws a StringIndexOutOfBoundsException instead of NumberFormatException when a String containing both possible exponent indicators is passed in.\nOne example of such a String is \"1eE\".\n\n", 
+	"remain":"\n\nNumberUtils createNumber throws a StringIndexOutOfBoundsException instead of NumberFormatException when a String containing both possible exponent indicators is passed in.\nOne example of such a String is \"1eE\".\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

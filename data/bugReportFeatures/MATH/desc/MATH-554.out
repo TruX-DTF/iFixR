@@ -1,0 +1,14 @@
+
+
+Cross product implementation uses the naive formulas (y1 z2 - y2 z1, ...). These formulas fail when vectors are almost colinear, like in the following example:
+
+Vector3D v1 = new Vector3D(9070467121.0, 4535233560.0, 1);
+Vector3D v2 = new Vector3D(9070467123.0, 4535233561.0, 1);
+System.out.println(Vector3D.crossProduct(v1, v2));
+
+
+The previous code displays 
+{ -1, 2, 0 }
+ instead of the correct answer 
+{ -1, 2, 1 }
+            

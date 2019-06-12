@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nTo reproduce:\n\nAssert.assertEquals(0.398942280401433, new MultivariateNormalDistribution(new double[]{0}, new double[][]{{1}}).density(new double[]{0}), 1e-15);\n\n\n\n", 
+	"remain":"\n\nTo reproduce:\n\n", 
+	"source":"Assert.assertEquals(0.398942280401433, new MultivariateNormalDistribution(new double[]{0}, new double[][]{{1}}).density(new double[]{0}\nAssert.assertEquals(0.398942280401433, new MultivariateNormalDistribution(new double[]{0}, new double[][]{{1}}).density(new double[]{0}), 1e-15);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

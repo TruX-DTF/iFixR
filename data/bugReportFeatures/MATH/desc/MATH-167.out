@@ -1,0 +1,7 @@
+
+
+NormalDistributionImpl::cumulativeProbability(double x) throws ConvergenceException
+if x deviates too much from the mean. For example, when x=+/-100, mean=0, sd=1.
+Of course the value of the CDF is hard to evaluate in these cases,
+but effectively it should be either zero or one.
+

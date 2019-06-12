@@ -1,0 +1,24 @@
+
+
+In EntityArrays 
+In
+ private static final String[][] ISO8859_1_ESCAPE 
+some matching is wrong, for example
+
+ 
+        {"\u00D7", "&Ouml;"}, // Ö - uppercase O, umlaut
+        {"\u00D8", "&times;"}, // multiplication sign
+
+
+but this must be   
+
+ 
+       {"\u00D6", "&Ouml;"}, // Ö - uppercase O, umlaut
+        {"\u00D7", "&times;"}, // multiplication sign
+
+
+according to http://www.fileformat.info/info/unicode/block/latin_supplement/list.htm
+First look:
+u00CA is missing in the array and all following entries are matched wrong by an offset of 1.
+Found on http://stackoverflow.com/questions/4172784/bug-in-apache-commons-stringescapeutil/4172915#4172915
+

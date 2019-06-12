@@ -1,0 +1,35 @@
+
+
+The following Test Case for replaceEach fails with a null pointer exception.
+I have expected that all StringUtils methods are "null-friendly"
+The use case is that i will stuff Values into the replacementList of which I do not want to check whether they are null.
+I admit the use case is not perfect, because it is unclear what happens on the replace.
+I outlined three expectations in the test case, of course only one should be met.
+If it is decided that none of them should be possible, I propose to update the documentation with what happens when null is passed as replacement string
+
+import static org.junit.Assert.assertEquals;
+
+import org.apache.commons.lang.StringUtils;
+import org.junit.Test;
+
+
+public class StringUtilsTest {
+
+	@Test
+	public void replaceEach(){
+		String original = "Hello World!";
+		String[] searchList = {"Hello", "World"};
+		String[] replacementList = {"Greetings", null};
+		String result = StringUtils.replaceEach(original, searchList, replacementList);
+		assertEquals("Greetings !", result);
+		//perhaps this is ok as well
+                //assertEquals("Greetings World!", result);
+                //or even
+		//assertEquals("Greetings null!", result);
+	}
+
+	
+}
+
+
+

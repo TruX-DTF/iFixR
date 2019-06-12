@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nWhen comparing a BigDecimal, the comparing is made using equals, not compareTo, which is more appropriate in the case of BigDecimal.  \n\n", 
+	"remain":"\n\nWhen comparing a BigDecimal, the comparing is made using equals, not compareTo, which is more appropriate in the case of BigDecimal.  \n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

@@ -1,0 +1,5 @@
+
+
+NumberUtils.createNumber throws a NumberFormatException when parsing "1l", "2l" .. etc...
+It works fine if you try to parse "01l" or "02l".  The condition isDigits(numeric.substring(1)), line 455 return false as numeric.substring(1) is an empty string for "1l"
+

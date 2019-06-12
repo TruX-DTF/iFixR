@@ -1,0 +1,4 @@
+
+
+String.to*Case() is locale-sensitive, this is usually not intended for case-insensitive comparisions. Please see Common Bug #3 for details.
+

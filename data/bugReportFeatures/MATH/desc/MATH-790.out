@@ -1,0 +1,5 @@
+
+
+When performing a Mann-Whitney U Test on large data sets (the attached test uses two 1500 element sets), intermediate integer values used in calculateAsymptoticPValue can overflow, leading to invalid results, such as p-values of NaN, or incorrect calculations.
+Attached is a patch, including a test, and a fix, which modifies the affected code to use doubles
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nIn \"MathUtils\", some \"equals\" methods will return true if both argument are NaN.\nUnless I'm mistaken, this contradicts the IEEE standard.\nIf nobody objects, I'm going to make the changes.\n\n", 
+	"remain":"\n\nIn \"MathUtils\", some \"equals\" methods will return true if both argument are NaN.\nUnless I'm mistaken, this contradicts the IEEE standard.\nIf nobody objects, I'm going to make the changes.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

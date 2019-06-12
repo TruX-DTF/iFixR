@@ -1,0 +1,7 @@
+
+
+In WordUtils.abbreviate, upper is adjusted to the length of the string, then to lower.
+But lower is never adjusted to the length of the string, so if lower is greater than str.lengt(), upper will be too...
+Then, str.substring(0, upper) throw a StringIndexOutOfBoundsException
+The fix is to adjust lower to the length of the string
+

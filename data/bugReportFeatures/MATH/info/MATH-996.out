@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nAn overflow exception is thrown when a Fraction is initialized with a maxDenominator from a double that is very close to a simple\nfraction.  For example:\ndouble d = 0.5000000001;\nFraction f = new Fraction(d, 10);\nPatch with unit test on way.\n\n", 
+	"remain":"\n\nAn overflow exception is thrown when a Fraction is initialized with a maxDenominator from a double that is very close to a simple\nfraction.  For example:\nPatch with unit test on way.\n", 
+	"source":"double d = 0.5000000001;\nFraction f = new Fraction(d, 10);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

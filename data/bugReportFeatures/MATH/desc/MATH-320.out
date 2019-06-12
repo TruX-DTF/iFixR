@@ -1,0 +1,18 @@
+
+
+The following jython code
+Start code
+from org.apache.commons.math.linear import *
+Alist = [[1.0, 2.0, 3.0],[2.0,3.0,4.0],[3.0,5.0,7.0]]
+A = Array2DRowRealMatrix(Alist)
+decomp = SingularValueDecompositionImpl(A)
+print decomp.getSingularValues()
+End code
+prints
+array('d', [11.218599757513008, 0.3781791648535976, nan])
+The last singular value should be something very close to 0 since the matrix
+is rank deficient.  When i use the result from getSolver() to solve a system, i end 
+up with a bunch of NaNs in the solution.  I assumed i would get back a least squares solution.
+Does this SVD implementation require that the matrix be full rank?  If so, then i would expect
+an exception to be thrown from the constructor or one of the methods.
+

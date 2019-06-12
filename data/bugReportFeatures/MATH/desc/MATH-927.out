@@ -1,0 +1,7 @@
+
+
+Serializing a GammaDistribution and deserializing it, does not result in a cloned distribution that produces the same samples.
+Cause: GammaDistribution inherits from AbstractRealDistribution, which implements Serializable. AbstractRealDistribution has random, in which we have a Well19937c instance, which inherits from AbstractWell. AbstractWell implements Serializable. AbstractWell inherits from BitsStreamGenerator, which is not Serializable, but does have a private field 'nextGaussian'.
+Solution: Make BitStreamGenerator implement Serializable as well.
+This probably affects other distributions as well.
+

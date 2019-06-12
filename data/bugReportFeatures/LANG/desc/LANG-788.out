@@ -1,0 +1,61 @@
+
+
+If a serializable object contains a reference to a primitive class, e.g. int.class or int[].class, the SerializationUtils throw a ClassNotFoundException when trying to clone that object.
+
+import org.apache.commons.lang3.SerializationUtils;
+import org.junit.Test;
+
+
+public class SerializationUtilsTest {
+
+	
+	@Test
+	public void primitiveTypeClassSerialization(){
+		Class<?> primitiveType = int.class;
+		
+		Class<?> clone = SerializationUtils.clone(primitiveType);
+		assertEquals(primitiveType, clone);
+	}
+}
+
+
+The problem was already reported as a java bug http://bugs.sun.com/view_bug.do?bug_id=4171142 and ObjectInputStream is fixed since java version 1.4.
+The SerializationUtils problem arises because the SerializationUtils internally use the ClassLoaderAwareObjectInputStream that overrides the ObjectInputStream's
+resoleClass method without delegating to the super method in case of a ClassNotFoundException.
+I understand the intention of the ClassLoaderAwareObjectInputStream, but this implementation should also implement a fallback to the original implementation.
+For example:
+
+        protected Class<?> resolveClass(ObjectStreamClass desc) throws IOException, ClassNotFoundException {
+            String name = desc.getName();
+            try {
+                return Class.forName(name, false, classLoader);
+            } catch (ClassNotFoundException ex) {
+            	try {
+            	     return Class.forName(name, false, Thread.currentThread().getContextClassLoader());
+            	} catch (Exception e) {
+		     return super.resolveClass(desc);
+		}
+            }
+        }
+
+
+Here is the code in ObjectInputStream that fixed the java bug.
+
+    protected Class<?> resolveClass(ObjectStreamClass desc)
+	throws IOException, ClassNotFoundException
+    {
+	String name = desc.getName();
+	try {
+	    return Class.forName(name, false, latestUserDefinedLoader());
+	} catch (ClassNotFoundException ex) {
+	    Class cl = (Class) primClasses.get(name);
+	    if (cl != null) {
+		return cl;
+	    } else {
+		throw ex;
+	    }
+	}
+    }
+
+
+

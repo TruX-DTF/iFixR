@@ -1,0 +1,18 @@
+
+
+OpenMapRealVector.ebeMultiply(RealVector) and OpenMapRealVector.ebeDivide(RealVector) return wrong values when one entry of the specified RealVector is nan or infinity. The bug is easy to understand. Here is the current implementation of ebeMultiply
+
+    public OpenMapRealVector ebeMultiply(RealVector v) {
+        checkVectorDimensions(v.getDimension());
+        OpenMapRealVector res = new OpenMapRealVector(this);
+        Iterator iter = entries.iterator();
+        while (iter.hasNext()) {
+            iter.advance();
+            res.setEntry(iter.key(), iter.value() * v.getEntry(iter.key()));
+        }
+        return res;
+    }
+
+
+The assumption is that for any double x, x * 0d == 0d holds, which is not true. The bug is easy enough to identify, but more complex to solve. The only solution I can come up with is to loop through all entries of v (instead of those entries which correspond to non-zero entries of this). I'm afraid about performance losses.
+

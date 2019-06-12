@@ -1,0 +1,16 @@
+
+
+ArrayUtils.addAll(T[] array1, T... array2) does not handle mixed array types very well.
+The stack trace for 
+Number[] st = ArrayUtils.addAll(new Integer[]
+{1}
+, new Long[]
+{2L}
+);
+starts:
+java.lang.ArrayStoreException
+	at java.lang.System.arraycopy(Native Method)
+	at org.apache.commons.lang3.ArrayUtils.addAll(ArrayUtils.java:2962)
+which is not all that obvious.
+It would be a lot clearer if the method threw an IlegalArgumentException or similar.
+

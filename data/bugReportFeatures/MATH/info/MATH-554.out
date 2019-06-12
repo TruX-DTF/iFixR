@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nCross product implementation uses the naive formulas (y1 z2 - y2 z1, ...). These formulas fail when vectors are almost colinear, like in the following example:\n\nVector3D v1 = new Vector3D(9070467121.0, 4535233560.0, 1);\nVector3D v2 = new Vector3D(9070467123.0, 4535233561.0, 1);\nSystem.out.println(Vector3D.crossProduct(v1, v2));\n\n\nThe previous code displays \n{ -1, 2, 0 }\n instead of the correct answer \n{ -1, 2, 1 }\n            \n", 
+	"remain":"\n\nCross product implementation uses the naive formulas (y1 z2 - y2 z1, ...). These formulas fail when vectors are almost colinear, like in the following example:\n\nSystem.out.println(Vector3D.crossProduct(v1, v2));\n\n\nThe previous code displays \n{ -1, 2, 0 }\n instead of the correct answer \n{ -1, 2, 1 }\n            \n", 
+	"source":"Vector3D v1 = new Vector3D(9070467121.0, 4535233560.0, 1);\nVector3D v2 = new Vector3D(9070467123.0, 4535233561.0, 1);\nSystem.out.println(Vector3D.crossProduct(v1, v2));", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

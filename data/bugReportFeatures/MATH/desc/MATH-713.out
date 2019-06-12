@@ -1,0 +1,13 @@
+
+
+Problem: commons-math-2.2 SimplexSolver.
+A variable with 0 coefficient may be assigned a negative value nevertheless restrictToNonnegative flag in call:
+SimplexSolver.optimize(function, constraints, GoalType.MINIMIZE, true);
+Function
+1 * x + 1 * y + 0
+Constraints:
+1 * x + 0 * y = 1
+Result:
+x = 1; y = -1;
+Probably variables with 0 coefficients are omitted at some point of computation and because of that the restrictions do not affect their values.
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe FastDateFormat getDateInstance() and getDateTimeInstance()  methods create the HashMap key from various items including the locale.\nIf the locale is null, then it is not made part of the key, but the stored object is created using the current default locale.\nIf the Locale is changed subsequently, then the wrong locale is applied.\nPatch for test case to follow.\n\n", 
+	"remain":"\n\nThe FastDateFormat getDateInstance() and getDateTimeInstance()  methods create the HashMap key from various items including the locale.\nIf the locale is null, then it is not made part of the key, but the stored object is created using the current default locale.\nIf the Locale is changed subsequently, then the wrong locale is applied.\nPatch for test case to follow.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

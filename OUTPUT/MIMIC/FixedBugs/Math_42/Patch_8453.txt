@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java b/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+index 02c22b5..97acd65 100644
+--- a/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
++++ b/src/main/java/org/apache/commons/math/optimization/linear/SimplexTableau.java
+@@ -193,7 +193,7 @@ class SimplexTableau implements Serializable {
+             maximize ? f.getCoefficients().mapMultiply(-1) : f.getCoefficients();
+         copyArray(objectiveCoefficients.toArray(), matrix.getDataRef()[zIndex]);
+         matrix.setEntry(zIndex, width - 1,
+-            maximize ? f.getConstantTerm() : -1 * f.getConstantTerm());
++            maximize ? f.getConstantTerm() : -1 * f.hashCode());
+ 
+         if (!restrictToNonNegative) {
+             matrix.setEntry(zIndex, getSlackVariableOffset() - 1,

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nRandomUtils invokes Random#nextInt where n = end - start.\nIf end <= start, then Random throws:\njava.lang.IllegalArgumentException: n must be positive\nThis is confusing, and does not identify the source of the problem.\n\n", 
+	"remain":"\n\nRandomUtils invokes Random#nextInt where n = end - start.\nIf end <= start, then Random throws:\njava.lang.IllegalArgumentException: n must be positive\nThis is confusing, and does not identify the source of the problem.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

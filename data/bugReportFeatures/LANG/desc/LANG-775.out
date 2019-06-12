@@ -1,0 +1,22 @@
+
+
+failing test code to add to TypeUtilsTest.testGetTypeArguments():
+
+typeVarAssigns = TypeUtils.getTypeArguments(Other.class, This.class);
+Assert.assertEquals(2, typeVarAssigns.size());
+Assert.assertEquals(String.class, typeVarAssigns.get(This.class.getTypeParameters()[0]));
+Assert.assertEquals(Other.class.getTypeParameters()[0], typeVarAssigns.get(This.class.getTypeParameters()[1]));
+
+
+These should pass based on:
+
+
+public interface This<K, V> {
+}
+
+public class Other<T> implements This<String, T> {
+}
+
+
+This case fails because the current code ignores the Other class due to its specifying its own type variables, which is obviously incorrect.  This report is extrapolated from an offline report received by Hen.
+

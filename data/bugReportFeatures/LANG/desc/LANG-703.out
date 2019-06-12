@@ -1,0 +1,17 @@
+
+
+Try
+
+ 
+StringUtils.join(new Object[]{
+        new Object() {
+          @Override
+          public String toString() {
+            return null;
+          }
+        }
+    }, ',');
+
+
+ToString should probably never return null, but it does in javax.mail.internet.InternetAddress
+

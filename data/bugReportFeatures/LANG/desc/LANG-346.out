@@ -1,0 +1,18 @@
+
+
+Get unexpected output for rounding by minutes or seconds.
+public void testRound()
+{
+    Calendar testCalendar = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
+    testCalendar.set(2007, 6, 2, 8, 9, 50);
+    Date date = testCalendar.getTime();
+    System.out.println("Before round() " + date);
+    System.out.println("After round()  " + DateUtils.round(date, Calendar.MINUTE));
+}
+--2.1 produces
+Before round() Mon Jul 02 03:09:50 CDT 2007
+After round()  Mon Jul 02 03:10:00 CDT 2007 – this is what I would expect
+--2.2 and 2.3 produces
+Before round() Mon Jul 02 03:09:50 CDT 2007
+After round()  Mon Jul 02 03:01:00 CDT 2007 – this appears to be wrong
+

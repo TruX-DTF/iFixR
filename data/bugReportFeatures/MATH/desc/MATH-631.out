@@ -1,0 +1,25 @@
+
+
+The following unit test:
+
+@Test
+public void testBug() {
+    final UnivariateRealFunction f = new UnivariateRealFunction() {
+            @Override
+            public double value(double x) {
+                return Math.exp(x) - Math.pow(Math.PI, 3.0);
+            }
+        };
+
+    UnivariateRealSolver solver = new RegulaFalsiSolver();
+    double root = solver.solve(100, f, 1, 10);
+}
+
+
+fails with
+
+illegal state: maximal count (100) exceeded: evaluations
+
+
+Using "PegasusSolver", the answer is found after 17 evaluations.
+

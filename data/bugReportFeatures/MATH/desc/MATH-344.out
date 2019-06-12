@@ -1,0 +1,4 @@
+
+
+The solve(final UnivariateRealFunction f, final double min, final double max, final double initial) function returns yMin or yMax if min or max are deemed to be roots, respectively, instead of min or max.
+

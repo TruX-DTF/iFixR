@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nIf two different fractions evaluate to the same double due to limited precision,\nthe compareTo methode returns 0 as if they were identical.\n\n// value is roughly PI - 3.07e-18\nFraction pi1 = new Fraction(1068966896, 340262731);\n\n// value is roughly PI + 1.936e-17\nFraction pi2 = new Fraction( 411557987, 131002976);\n\nSystem.out.println(pi1.doubleValue() - pi2.doubleValue()); // exactly 0.0 due to limited IEEE754 precision\nSystem.out.println(pi1.compareTo(pi2)); // display 0 instead of a negative value\n\n\n\n", 
+	"remain":"\n\nIf two different fractions evaluate to the same double due to limited precision,\nthe compareTo methode returns 0 as if they were identical.\n\n\n\nSystem.out.println(pi1.doubleValue() - pi2.doubleValue()); // exactly 0.0 due to limited IEEE754 precision\nSystem.out.println(pi1.compareTo(pi2)); // display 0 instead of a negative value\n", 
+	"source":"// value is roughly PI - 3.07e-18\n\nFraction pi1 = new Fraction(1068966896, 340262731);\n\n// value is roughly PI + 1.936e-17\n\nFraction pi2 = new Fraction( 411557987, 131002976);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

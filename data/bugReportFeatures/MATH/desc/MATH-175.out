@@ -1,0 +1,33 @@
+
+
+ChiSquareTestImpl is returning incorrect chi-squared value. An implicit assumption of public double chiSquare(double[] expected, long[] observed) is that the sum of expected and observed are equal. That is, in the code:
+for (int i = 0; i < observed.length; i++) 
+{
+            dev = ((double) observed[i] - expected[i]);
+            sumSq += dev * dev / expected[i];
+        }
+this calculation is only correct if sum(observed)==sum(expected). When they are not equal then one must rescale the expected value by sum(observed) / sum(expected) so that they are.
+Ironically, it is an example in the unit test ChiSquareTestTest that highlights the error:
+long[] observed1 = 
+{ 500, 623, 72, 70, 31 }
+;
+        double[] expected1 = 
+{ 485, 541, 82, 61, 37 }
+;
+        assertEquals( "chi-square test statistic", 16.4131070362, testStatistic.chiSquare(expected1, observed1), 1E-10);
+        assertEquals("chi-square p-value", 0.002512096, testStatistic.chiSquareTest(expected1, observed1), 1E-9);
+16.413 is not correct because the expected values do not make sense, they should be: 521.19403 581.37313  88.11940  65.55224  39.76119 so that the sum of expected equals 1296 which is the sum of observed.
+Here is some R code (r-project.org) which proves it:
+> o1
+[1] 500 623  72  70  31
+> e1
+[1] 485 541  82  61  37
+> chisq.test(o1,p=e1,rescale.p=TRUE)
+        Chi-squared test for given probabilities
+data:  o1 
+X-squared = 9.0233, df = 4, p-value = 0.06052
+> chisq.test(o1,p=e1,rescale.p=TRUE)$observed
+[1] 500 623  72  70  31
+> chisq.test(o1,p=e1,rescale.p=TRUE)$expected
+[1] 521.19403 581.37313  88.11940  65.55224  39.76119
+

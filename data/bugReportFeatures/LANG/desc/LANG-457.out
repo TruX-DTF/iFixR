@@ -1,0 +1,4 @@
+
+
+Seems to be similar to LANG-300, except that if you don't place a digit in front of the "l" or "L" it throws a StringIndexOutOfBoundsException instead.
+

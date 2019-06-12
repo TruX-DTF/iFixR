@@ -1,0 +1,4 @@
+
+
+There is a range check for setting the elitismRate via ElitisticListPopulation's setElitismRate method, but not via the constructors.
+

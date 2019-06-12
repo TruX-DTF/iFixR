@@ -1,0 +1,9 @@
+
+
+The test at the beginning of MathUtils.gcd(u, v) for arguments equal to zero fails when u and v contain high enough powers of 2 so that their product overflows to zero.
+        assertEquals(3 * (1<<15), MathUtils.gcd(3 * (1<<20), 9 * (1<<15)));
+Fix: Replace the test at the start of MathUtils.gcd()
+        if (u * v == 0) {
+by
+        if (u == 0 || v == 0) {
+

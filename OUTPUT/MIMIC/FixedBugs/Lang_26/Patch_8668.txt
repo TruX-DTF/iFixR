@@ -1,0 +1,12 @@
+//**********************************************************
+//src/main/java/org/apache/commons/lang3/time/DateUtils.java ------ 203
+//**********************************************************
+===Buggy Code===
+return (cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR));
+
+===Patch Code===
+return ((cal1.get(Calendar.ERA) == cal2.get(Calendar.ERA) &&
+                cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR))) || !(val.get(Calendar.HOUR_OF_DAY) == 0);

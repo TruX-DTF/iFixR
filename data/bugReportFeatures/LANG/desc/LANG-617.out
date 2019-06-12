@@ -1,0 +1,35 @@
+
+
+Supplementary characters in UTF-16 are those whose code points are above 0xffff, that is, require more than 1 Java char to be encoded, as explained here: http://java.sun.com/developer/technicalArticles/Intl/Supplementary/
+Currently, StringEscapeUtils.escapeXML() isn't aware of this coding scheme and treats each char as one character, which is not always right.
+A possible solution in class Entities would be:
+    public void escape(Writer writer, String str) throws IOException {
+        int len = str.length();
+        for (int i = 0; i < len; i++) {
+            int code = str.codePointAt;
+            String entityName = this.entityName(code);
+            if (entityName != null) 
+{
+                writer.write('&');
+                writer.write(entityName);
+                writer.write(';');
+            }
+ else if (code > 0x7F) 
+{
+                    writer.write("&#");
+                    writer.write(code);
+                    writer.write(';');
+            }
+ else 
+{
+                    writer.write((char) code);
+            }
+
+            if (code > 0xffff) 
+{
+                    i++;
+            }
+        }
+    }
+Besides fixing escapeXML(), this will also affect HTML escaping functions. I guess that's a good thing, but please remember I have only tested escapeXML().
+

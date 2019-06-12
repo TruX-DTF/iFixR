@@ -1,0 +1,8 @@
+
+
+An overflow exception is thrown when a Fraction is initialized with a maxDenominator from a double that is very close to a simple
+fraction.  For example:
+double d = 0.5000000001;
+Fraction f = new Fraction(d, 10);
+Patch with unit test on way.
+

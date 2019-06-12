@@ -1,0 +1,20 @@
+
+
+The greatestCommonDivisor method in class Fraction does not find the gcd of Integer.MIN_VALUE and 2^k, and this case can be triggered by taking Integer.MIN_VALUE as the numerator. Note that the case of taking Integer.MIN_VALUE as the denominator is handled explicitly in the getReducedFraction factory method.
+FractionTest.java
+	// additional test cases
+	public void testReducedFactory_int_int() {
+		// ...
+		f = Fraction.getReducedFraction(Integer.MIN_VALUE, 2);
+		assertEquals(Integer.MIN_VALUE / 2, f.getNumerator());
+		assertEquals(1, f.getDenominator());
+
+	public void testReduce() {
+		// ...
+		f = Fraction.getFraction(Integer.MIN_VALUE, 2);
+		result = f.reduce();
+		assertEquals(Integer.MIN_VALUE / 2, result.getNumerator());
+		assertEquals(1, result.getDenominator());
+
+
+

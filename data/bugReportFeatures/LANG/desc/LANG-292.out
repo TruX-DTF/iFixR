@@ -1,0 +1,13 @@
+
+
+Following test (in EntitiesTest.java) fails:
+    public void testNumberOverflow() throws Exception 
+{
+        doTestUnescapeEntity("&#12345678;", "&#12345678;");
+        doTestUnescapeEntity("x&#12345678;y", "x&#12345678;y");
+        doTestUnescapeEntity("&#x12345678;", "&#x12345678;");
+        doTestUnescapeEntity("x&#x12345678;y", "x&#x12345678;y");
+    }
+
+Maximim value for char is 0xFFFF, so &#12345678; is invalid entity reference, and so should be left as is.
+

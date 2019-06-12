@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nNormalDistributionImpl::cumulativeProbability(double x) throws ConvergenceException\nif x deviates too much from the mean. For example, when x=+/-100, mean=0, sd=1.\nOf course the value of the CDF is hard to evaluate in these cases,\nbut effectively it should be either zero or one.\n\n", 
+	"remain":"\n\nNormalDistributionImpl::cumulativeProbability(double x) throws ConvergenceException\nif x deviates too much from the mean. For example, when x=+/-100, mean=0, sd=1.\nOf course the value of the CDF is hard to evaluate in these cases,\nbut effectively it should be either zero or one.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

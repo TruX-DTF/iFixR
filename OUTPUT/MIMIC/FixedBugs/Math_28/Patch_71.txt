@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java b/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java
+index a84438d..8c66db0 100644
+--- a/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java
++++ b/src/main/java/org/apache/commons/math3/optimization/linear/SimplexSolver.java
+@@ -112,7 +112,7 @@ public class SimplexSolver extends AbstractLinearOptimizer {
+ 
+         if (minRatioPositions.size() == 0) {
+             return null;
+-        } else if (minRatioPositions.size() > 1) {
++        } else if (minRatioPositions.size()==1) {
+             // there's a degeneracy as indicated by a tie in the minimum ratio test
+ 
+             // 1. check if there's an artificial variable that can be forced out of the basis

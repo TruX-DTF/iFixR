@@ -1,0 +1,32 @@
+
+
+FastDateFormat apparently doesn't respect the locale it was sent on creation when outputting week in year (e.g. "ww") in format(). It seems to use the settings of the system locale for firstDayOfWeek and minimalDaysInFirstWeek, which (depending on the year) may result in the incorrect week number being output.
+Here is a simple test program to demonstrate the problem by comparing with SimpleDateFormat, which gets the week number right:
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.text.SimpleDateFormat;
+
+import org.apache.commons.lang.time.FastDateFormat;
+
+public class FastDateFormatWeekBugDemo {
+    public static void main(String[] args) {
+        Locale.setDefault(new Locale("en", "US"));
+        Locale locale = new Locale("sv", "SE");
+
+        Calendar cal = Calendar.getInstance(); // setting locale here doesn't change outcome
+        cal.set(2010, 0, 1, 12, 0, 0);
+        Date d = cal.getTime();
+        System.out.println("Target date: " + d);
+
+        FastDateFormat fdf = FastDateFormat.getInstance("EEEE', week 'ww", locale);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE', week 'ww", locale);
+        System.out.println("FastDateFormat:   " + fdf.format(d)); // will output "FastDateFormat:   fredag, week 01"
+        System.out.println("SimpleDateFormat: " + sdf.format(d)); // will output "SimpleDateFormat: fredag, week 53"
+    }
+}
+
+
+If sv/SE is passed to Locale.setDefault() instead of en/US, both FastDateFormat and SimpleDateFormat output the correct week number.
+

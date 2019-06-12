@@ -1,0 +1,5 @@
+
+
+I get a bug with event handling: I track 2 events that occur in the same step, when the first one is accepted, it resets the state but the reinitialization is not complete and the second one becomes unable to find its way.
+I can't give my context, which is rather large, but I tried a patch that works for me, unfortunately it breaks the unit tests.
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nNumberUtils.createNumber() should work equally for 0x1234 and 0X1234; currently 0X1234 generates a NumberFormatException\nInteger.decode() handles both upper and lower case hex.\n\n", 
+	"remain":"\n\nNumberUtils.createNumber() should work equally for 0x1234 and 0X1234; currently 0X1234 generates a NumberFormatException\nInteger.decode() handles both upper and lower case hex.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

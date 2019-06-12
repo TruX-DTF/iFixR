@@ -1,0 +1,17 @@
+
+
+Method 
+    BisectionSolver.solve(final UnivariateRealFunction f, double min, double max, double initial)  
+invokes 
+    BisectionSolver.solve(double min, double max) 
+which throws NullPointerException, as member variable
+    UnivariateRealSolverImpl.f 
+is null.
+Instead the method:
+    BisectionSolver.solve(final UnivariateRealFunction f, double min, double max)
+should be called.
+Steps to reproduce:
+invoke:
+     new BisectionSolver().solve(someUnivariateFunctionImpl, 0.0, 1.0, 0.5);
+NullPointerException will be thrown.
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nIn \"MultiStartUnivariateRealOptimizer\" (package \"optimization\"), the method \"getResult\" returns the result of the last run of the \"underlying\" optimizer; this last result might not be the best one, in which case it will not correspond to the value returned by the \"optimize\" method. This is confusing and does not seem very useful. I think that \"getResult\" should be defined as\n\n \npublic double getResult() {\n    return optima[0];\n}\n\n\nand similarly\n\npublic double getFunctionValue() {\n    return optimaValues[0];\n}\n\n\n\n", 
+	"remain":"\n\nIn \"MultiStartUnivariateRealOptimizer\" (package \"optimization\"), the method \"getResult\" returns the result of the last run of the \"underlying\" optimizer; this last result might not be the best one, in which case it will not correspond to the value returned by the \"optimize\" method. This is confusing and does not seem very useful. I think that \"getResult\" should be defined as\n\n \n}\n\n\nand similarly\n\n    return optimaValues[0];\n", 
+	"source":"public double getResult() {\n    return optima[0];\n}\npublic double getFunctionValue() {\n    return optimaValues[0];\n}", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

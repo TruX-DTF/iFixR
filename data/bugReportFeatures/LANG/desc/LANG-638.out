@@ -1,0 +1,5 @@
+
+
+NumberUtils createNumber throws a StringIndexOutOfBoundsException instead of NumberFormatException when a String containing both possible exponent indicators is passed in.
+One example of such a String is "1eE".
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nMethod \n    BisectionSolver.solve(final UnivariateRealFunction f, double min, double max, double initial)  \ninvokes \n    BisectionSolver.solve(double min, double max) \nwhich throws NullPointerException, as member variable\n    UnivariateRealSolverImpl.f \nis null.\nInstead the method:\n    BisectionSolver.solve(final UnivariateRealFunction f, double min, double max)\nshould be called.\nSteps to reproduce:\ninvoke:\n     new BisectionSolver().solve(someUnivariateFunctionImpl, 0.0, 1.0, 0.5);\nNullPointerException will be thrown.\n\n", 
+	"remain":"\n\nMethod \n    BisectionSolver.solve(final UnivariateRealFunction f, double min, double max, double initial)  \ninvokes \n    BisectionSolver.solve(double min, double max) \nwhich throws NullPointerException, as member variable\n    UnivariateRealSolverImpl.f \nis null.\nInstead the method:\n    BisectionSolver.solve(final UnivariateRealFunction f, double min, double max)\nshould be called.\nSteps to reproduce:\ninvoke:\nNullPointerException will be thrown.\n", 
+	"source":"new BisectionSolver().solve(someUnivariateFunctionImpl, 0.0, 1.0, 0.5);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

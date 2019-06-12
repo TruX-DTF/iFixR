@@ -1,0 +1,21 @@
+
+
+SimplexSolver throws UnboundedSolutionException when trying to solve minimization linear programming problem. The number of exception thrown depends on the number of variables.
+In order to see that behavior of SimplexSolver first try to run JUnit test setting a final variable ENTITIES_COUNT = 2 and that will give almost good result and then set it to 15 and you'll get a massive of unbounded exceptions.
+First iteration is runned with predefined set of input data with which the Solver gives back an appropriate result.
+The problem itself is well tested by it's authors (mathematicians who I believe know what they developed) using Matlab 10 with no unbounded solutions on the same rules of creatnig random variables values.
+What is strange to me is the dependence of the number of UnboundedSolutionException exceptions on the number of variables in the problem.
+The problem is formulated as
+min(1*t + 0*L) (for every r-th subject)
+s.t.
+-q(r) + QL >= 0
+x(r)t - XL >= 0
+L >= 0
+where 
+r = 1..R, 
+L = 
+{l(1), l(2), ..., l(R)}
+ (vector of R rows and 1 column),
+Q - coefficients matrix MxR
+X - coefficients matrix NxR 
+

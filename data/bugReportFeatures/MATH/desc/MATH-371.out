@@ -1,0 +1,19 @@
+
+
+Similar to the issue described in MATH-201, using PearsonsCorrelation.getCorrelationPValues() with many treatments results in p-values that are continuous down to 2.2e-16 but that drop to 0 after that.
+In MATH-201, the problem was described as such:
+> So in essence, the p-value returned by TTestImpl.tTest() is:
+> 
+> 1.0 - (cumulativeProbability(t) - cumulativeProbabily(-t))
+> 
+> For large-ish t-statistics, cumulativeProbabilty(-t) can get quite small, and cumulativeProbabilty(t) can get very close to 1.0. When 
+> cumulativeProbability(-t) is less than the machine epsilon, we get p-values equal to zero because:
+> 
+> 1.0 - 1.0 + 0.0 = 0.0
+The solution in MATH-201 was to modify the p-value calculation to this:
+> p = 2.0 * cumulativeProbability(-t)
+Here, the problem is similar.  From PearsonsCorrelation.getCorrelationPValues():
+  p = 2 * (1 - tDistribution.cumulativeProbability(t));
+Directly calculating the p-value using identical code as PearsonsCorrelation.getCorrelationPValues(), but with the following change seems to solve the problem:
+  p = 2 * (tDistribution.cumulativeProbability(-t));
+

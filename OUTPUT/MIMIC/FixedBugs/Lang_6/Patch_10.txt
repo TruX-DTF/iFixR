@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/lang3/text/translate/UnicodeUnescaper.java b/src/main/java/org/apache/commons/lang3/text/translate/UnicodeUnescaper.java
+index b9edbb0..36c44ec 100644
+--- a/src/main/java/org/apache/commons/lang3/text/translate/UnicodeUnescaper.java
++++ b/src/main/java/org/apache/commons/lang3/text/translate/UnicodeUnescaper.java
+@@ -34,7 +34,7 @@ public class UnicodeUnescaper extends CharSequenceTranslator {
+      */
+     @Override
+     public int translate(CharSequence input, int index, Writer out) throws IOException {
+-        if (input.charAt(index) == '\\' && index + 1 < input.length() && input.charAt(index + 1) == 'u') {
++        if (input.charAt(index)<='\\' && index + 1 < input.length() && input.charAt(index + 1) == 'u') {
+             // consume optional additional 'u' chars
+             int i = 2;
+             while (index + i < input.length() && input.charAt(index + i) == 'u') {

@@ -1,0 +1,8 @@
+
+
+To reproduce:
+
+Assert.assertEquals(0.398942280401433, new MultivariateNormalDistribution(new double[]{0}, new double[][]{{1}}).density(new double[]{0}), 1e-15);
+
+
+

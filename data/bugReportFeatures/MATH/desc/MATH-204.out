@@ -1,0 +1,33 @@
+
+
+I am getting this exception:
+java.lang.IllegalArgumentException: Function values at endpoints do not have different signs.  Endpoints: [-100000.0,1.7976931348623157E308]  Values: [0.0,-101945.04630982173]
+at org.apache.commons.math.analysis.BrentSolver.solve(BrentSolver.java:99)
+at org.apache.commons.math.analysis.BrentSolver.solve(BrentSolver.java:62)
+The exception should not be thrown with values  [0.0,-101945.04630982173] because 0.0 is positive.
+According to Brent Worden, the algorithm should stop and return 0 as the root instead of throwing an exception.
+The problem comes from this method:
+    public double solve(double min, double max) throws MaxIterationsExceededException, 
+        FunctionEvaluationException {
+        clearResult();
+        verifyInterval(min, max);
+        double yMin = f.value(min);
+        double yMax = f.value(max);
+        // Verify bracketing
+        if (yMin * yMax >= 0) 
+{
+            throw new IllegalArgumentException
+            ("Function values at endpoints do not have different signs." +
+                    "  Endpoints: [" + min + "," + max + "]" + 
+                    "  Values: [" + yMin + "," + yMax + "]");       
+        }
+
+        // solve using only the first endpoint as initial guess
+        return solve(min, yMin, max, yMax, min, yMin);
+    }
+One way to fix it would be to add this code after the assignment of yMin and yMax:
+        if (yMin ==0 || yMax == 0) 
+{
+        	return 0;
+       	}
+            

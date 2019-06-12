@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java b/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+index 5091493..7695143 100644
+--- a/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
++++ b/src/main/java/org/apache/commons/math/optimization/general/LevenbergMarquardtOptimizer.java
+@@ -362,7 +362,7 @@ public class LevenbergMarquardtOptimizer extends AbstractLeastSquaresOptimizer {
+ 
+                 // evaluate the function at x + p and calculate its norm
+                 updateResidualsAndCost();
+-                current = new VectorialPointValuePair(point, objective);
++                current = new VectorialPointValuePair(point, objective, firstIteration);
+ 
+                 // compute the scaled actual reduction
+                 double actRed = -1.0;

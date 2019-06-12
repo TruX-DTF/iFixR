@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nIn EntityArrays \nIn\n private static final String[][] ISO8859_1_ESCAPE \nsome matching is wrong, for example\n\n \n        {\"\\u00D7\", \"&Ouml;\"}, // Ö - uppercase O, umlaut\n        {\"\\u00D8\", \"&times;\"}, // multiplication sign\n\n\nbut this must be   \n\n \n       {\"\\u00D6\", \"&Ouml;\"}, // Ö - uppercase O, umlaut\n        {\"\\u00D7\", \"&times;\"}, // multiplication sign\n\n\naccording to http://www.fileformat.info/info/unicode/block/latin_supplement/list.htm\nFirst look:\nu00CA is missing in the array and all following entries are matched wrong by an offset of 1.\nFound on http://stackoverflow.com/questions/4172784/bug-in-apache-commons-stringescapeutil/4172915#4172915\n\n", 
+	"remain":"\n\nIn EntityArrays \nIn\n private static final String[][] ISO8859_1_ESCAPE \nsome matching is wrong, for example\n\n \n        {\"\\u00D7\", \"&Ouml;\"}, // Ö - uppercase O, umlaut\n        {\"\\u00D8\", \"&times;\"}, // multiplication sign\n\n\nbut this must be   \n\n \n       {\"\\u00D6\", \"&Ouml;\"}, // Ö - uppercase O, umlaut\n        {\"\\u00D7\", \"&times;\"}, // multiplication sign\n\n\naccording to http://www.fileformat.info/info/unicode/block/latin_supplement/list.htm\nFirst look:\nu00CA is missing in the array and all following entries are matched wrong by an offset of 1.\nFound on http://stackoverflow.com/questions/4172784/bug-in-apache-commons-stringescapeutil/4172915#4172915\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

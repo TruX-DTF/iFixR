@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nProblem: commons-math-2.2 SimplexSolver.\nA variable with 0 coefficient may be assigned a negative value nevertheless restrictToNonnegative flag in call:\nSimplexSolver.optimize(function, constraints, GoalType.MINIMIZE, true);\nFunction\n1 * x + 1 * y + 0\nConstraints:\n1 * x + 0 * y = 1\nResult:\nx = 1; y = -1;\nProbably variables with 0 coefficients are omitted at some point of computation and because of that the restrictions do not affect their values.\n\n", 
+	"remain":"\n\nProblem: commons-math-2.2 SimplexSolver.\nA variable with 0 coefficient may be assigned a negative value nevertheless restrictToNonnegative flag in call:\nFunction\n1 * x + 1 * y + 0\nConstraints:\n1 * x + 0 * y = 1\nResult:\nProbably variables with 0 coefficients are omitted at some point of computation and because of that the restrictions do not affect their values.\n", 
+	"source":"SimplexSolver.optimize(function, constraints, GoalType.MINIMIZE, true);\nx = 1; y = -1;", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

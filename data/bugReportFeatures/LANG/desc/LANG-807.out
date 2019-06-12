@@ -1,0 +1,7 @@
+
+
+RandomUtils invokes Random#nextInt where n = end - start.
+If end <= start, then Random throws:
+java.lang.IllegalArgumentException: n must be positive
+This is confusing, and does not identify the source of the problem.
+

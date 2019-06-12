@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nFor both Complex add and subtract, the javadoc states that\n\n     * If either this or <code>rhs</code> has a NaN value in either part,\n     * {@link #NaN} is returned; otherwise Inifinite and NaN values are\n     * returned in the parts of the result according to the rules for\n     * {@link java.lang.Double} arithmetic\n\n\nSubtract includes an isNaN test and returns Complex.NaN if either complex argument isNaN; but add omits this test.  The test should be added to the add implementation (actually restored, since this looks like a code merge problem going back to 1.1).\n\n", 
+	"remain":"\n\nFor both Complex add and subtract, the javadoc states that\n\n     * If either this or <code>rhs</code> has a NaN value in either part,\n     * {@link #NaN} is returned; otherwise Inifinite and NaN values are\n     * returned in the parts of the result according to the rules for\n     * {@link java.lang.Double} arithmetic\n\n\nSubtract includes an isNaN test and returns Complex.NaN if either complex argument isNaN; but add omits this test.  The test should be added to the add implementation (actually restored, since this looks like a code merge problem going back to 1.1).\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

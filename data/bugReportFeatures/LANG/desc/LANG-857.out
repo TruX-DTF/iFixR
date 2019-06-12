@@ -1,0 +1,27 @@
+
+
+I found that there is bad surrogate pair handling in the CharSequenceTranslator
+This is a simple test case for this problem.
+\uD83D\uDE30 is a surrogate pair.
+
+@Test
+public void testEscapeSurrogatePairs() throws Exception {
+    assertEquals("\uD83D\uDE30", StringEscapeUtils.escapeCsv("\uD83D\uDE30"));
+}
+
+
+You'll get the exception as shown below.
+
+java.lang.StringIndexOutOfBoundsException: String index out of range: 2
+	at java.lang.String.charAt(String.java:658)
+	at java.lang.Character.codePointAt(Character.java:4668)
+	at org.apache.commons.lang3.text.translate.CharSequenceTranslator.translate(CharSequenceTranslator.java:95)
+	at org.apache.commons.lang3.text.translate.CharSequenceTranslator.translate(CharSequenceTranslator.java:59)
+	at org.apache.commons.lang3.StringEscapeUtils.escapeCsv(StringEscapeUtils.java:556)
+
+
+Patch attached, the method affected:
+
+public final void translate(CharSequence input, Writer out) throws IOException
+
+

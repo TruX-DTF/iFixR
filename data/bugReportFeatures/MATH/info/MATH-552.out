@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nMultidimensionalCounter counter = new MultidimensionalCounter(2, 4);\nfor (Integer i : counter) {\n    int[] x = counter.getCounts;\n    System.out.println(i + \" \" + Arrays.toString);\n}\nOutput is:\n0 [0, 0]\n1 [0, 1]\n2 [0, 2]\n3 [0, 2]   <=== should be [0, 3]\n4 [1, 0]\n5 [1, 1]\n6 [1, 2]\n7 [1, 2]   <=== should be [1, 3]\n\n", 
+	"remain":"\n\n    int[] x = counter.getCounts;\n}\nOutput is:\n0 [0, 0]\n1 [0, 1]\n2 [0, 2]\n3 [0, 2]   <=== should be [0, 3]\n4 [1, 0]\n5 [1, 1]\n6 [1, 2]\n7 [1, 2]   <=== should be [1, 3]\n", 
+	"source":"MultidimensionalCounter counter = new MultidimensionalCounter(2, 4);\nfor (Integer i : counter) {\n    int[] x = counter.getCounts;\n    System.out.println(i + \" \" + Arrays.toString);\n}", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

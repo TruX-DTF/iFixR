@@ -1,0 +1,12 @@
+
+
+ArrayUtils.add(T[] array, T element) can create an unexpected ClassCastException.
+For example, the following code compiles without a warning:
+
+String[] sa = ArrayUtils.add(stringArray, aString);
+
+
+and works fine, provided at least one of the parameters is non-null. However, if both parameters are null, the add() method returns an Object[] array, hence the Exception.
+If both parameters are null, it's not possible to determine the correct array type to return, so it seems to me this should be disallowed.
+I think the method ought to be changed to throw IllegalParameterException when both parameters are null.
+

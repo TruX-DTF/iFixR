@@ -1,0 +1,8 @@
+
+
+the two methods getCovariances() and guessParametersErrors() from org.apache.commons.math.estimation.AbstractEstimator crash with ArrayOutOfBounds exception when some of the parameters are bound. The reason is that the Jacobian is calculated only for the unbound parameters. in the code you loop through all parameters.
+line #166: final int cols = problem.getAllParameters().length;
+should be replaced by:  final int cols = problem.getUnboundParameters().length;
+(similar changes could be done in guessParametersErrors())
+the dissadvantage of the above bug fix is that what is returned to the user is an array with smaller size than the number of all parameters. Alternatively, you can have some logic in the code which writes zeros for the elements of the covariance matrix corresponding to the bound parameters
+

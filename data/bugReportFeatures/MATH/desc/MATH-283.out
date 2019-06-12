@@ -1,0 +1,5 @@
+
+
+MultiDirectional.iterateSimplex loops forever if the starting point is the correct solution.
+see the attached test case (testMultiDirectionalCorrectStart) as an example.
+

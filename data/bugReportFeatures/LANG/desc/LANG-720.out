@@ -1,0 +1,17 @@
+
+
+Hello.
+I use StringEscapeUtils.escapeXml(input) to escape special characters for XML.
+This method outputs wrong results when input contains characters in Supplementary Planes.
+String str1 = "\uD842\uDFB7" + "A";
+String str2 = StringEscapeUtils.escapeXml(str1);
+// The value of str2 must be equal to the one of str1,
+// because str1 does not contain characters to be escaped.
+// However, str2 is diffrent from str1.
+System.out.println(URLEncoder.encode(str1, "UTF-16BE")); //%D8%42%DF%B7A
+System.out.println(URLEncoder.encode(str2, "UTF-16BE")); //%D8%42%DF%B7%FF%FD
+The cause of this problem is that the loop to translate input character by character is wrong.
+In CharSequenceTranslator.translate(CharSequence input, Writer out),
+loop counter "i" moves from 0 to Character.codePointCount(input, 0, input.length()),
+but it should move from 0 to input.length().
+

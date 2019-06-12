@@ -1,0 +1,11 @@
+
+
+When calling unescapeHtml4() on the String "&#03" (or any String that contains these characters) an Exception is thrown:
+Exception in thread "main" java.lang.StringIndexOutOfBoundsException: String index out of range: 4
+	at java.lang.String.charAt(String.java:686)
+	at org.apache.commons.lang3.text.translate.NumericEntityUnescaper.translate(NumericEntityUnescaper.java:49)
+	at org.apache.commons.lang3.text.translate.AggregateTranslator.translate(AggregateTranslator.java:53)
+	at org.apache.commons.lang3.text.translate.CharSequenceTranslator.translate(CharSequenceTranslator.java:88)
+	at org.apache.commons.lang3.text.translate.CharSequenceTranslator.translate(CharSequenceTranslator.java:60)
+	at org.apache.commons.lang3.StringEscapeUtils.unescapeHtml4(StringEscapeUtils.java:351)
+

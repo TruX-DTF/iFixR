@@ -1,0 +1,7 @@
+
+
+In AbstractLeastSquares, residualsWeights contains the WEIGHTS assigned to each observation.  In the method getRMS(), these weights are multiplicative as they should. unlike in getChiSquare() where it appears at the denominator!   If the weight is really the weight of the observation, it should multiply the square of the residual even in the computation of the chi2.
+ Once corrected, getRMS() can even reduce
+ public double getRMS() 
+{return Math.sqrt(getChiSquare()/rows);}
+            

@@ -1,0 +1,38 @@
+
+
+The method LevenbergMarquardtOptimizer.getIterations() does not report the correct number of iterations; It always returns 0. A quick look at the code shows that only SimplexOptimizer calls BaseOptimizer.incrementEvaluationsCount()
+I've put a test case below. Notice how the evaluations count is correctly incremented, but the iterations count is not.
+
+    @Test
+    public void testGetIterations() {
+        // setup
+        LevenbergMarquardtOptimizer otim = new LevenbergMarquardtOptimizer();
+
+        // action
+        otim.optimize(new MaxEval(100), new Target(new double[] { 1 }),
+                new Weight(new double[] { 1 }), new InitialGuess(
+                        new double[] { 3 }), new ModelFunction(
+                        new MultivariateVectorFunction() {
+                            @Override
+                            public double[] value(double[] point)
+                                    throws IllegalArgumentException {
+                                return new double[] { FastMath.pow(point[0], 4) };
+                            }
+                        }), new ModelFunctionJacobian(
+                        new MultivariateMatrixFunction() {
+                            @Override
+                            public double[][] value(double[] point)
+                                    throws IllegalArgumentException {
+                                return new double[][] { { 0.25 * FastMath.pow(
+                                        point[0], 3) } };
+                            }
+                        }));
+
+        // verify
+        assertThat(otim.getEvaluations(), greaterThan(1));
+        assertThat(otim.getIterations(), greaterThan(1));
+    }
+
+
+
+

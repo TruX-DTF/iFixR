@@ -1,0 +1,15 @@
+diff --git a/src/main/java/org/apache/commons/lang3/time/DateFormatUtils.java b/src/main/java/org/apache/commons/lang3/time/DateFormatUtils.java
+index 2a01f30..d289328 100644
+--- a/src/main/java/org/apache/commons/lang3/time/DateFormatUtils.java
++++ b/src/main/java/org/apache/commons/lang3/time/DateFormatUtils.java
+@@ -313,7 +313,10 @@ public class DateFormatUtils {
+      * @since 2.4
+      */
+     public static String format(Calendar calendar, String pattern, TimeZone timeZone, Locale locale) {
+-        FastDateFormat df = FastDateFormat.getInstance(pattern, timeZone, locale);
++        if (pattern == null) {
++	    return null;
++	}
++FastDateFormat df = FastDateFormat.getInstance(pattern, timeZone, locale);
+         return df.format(calendar);
+     }

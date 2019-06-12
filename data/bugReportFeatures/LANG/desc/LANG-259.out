@@ -1,0 +1,5 @@
+
+
+int org.apache.commons.lang.enums.ValuedEnum.compareTo(Object other)
+ is not typesafe - if the int-values are the same, it will return "0" even for two totally different sub-classes of ValuedEnum
+

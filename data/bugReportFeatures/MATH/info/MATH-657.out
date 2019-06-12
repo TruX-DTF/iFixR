@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nIn class Complex, division by zero always returns NaN. I think that it should return NaN only when the numerator is also ZERO, otherwise the result should be INF. See here.\n\n", 
+	"remain":"\n\nIn class Complex, division by zero always returns NaN. I think that it should return NaN only when the numerator is also ZERO, otherwise the result should be INF. See here.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

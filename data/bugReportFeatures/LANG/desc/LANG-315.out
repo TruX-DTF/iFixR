@@ -1,0 +1,26 @@
+
+
+In my opinion, it is a bug that suspend() acts as split(), if followed by stop(); see below:
+        StopWatch sw = new StopWatch();
+        sw.start();
+        Thread.sleep(1000);
+        sw.suspend();
+        // Time 1 (ok)
+        System.out.println(sw.getTime());
+        Thread.sleep(2000);
+        // Time 1 (again, ok)
+        System.out.println(sw.getTime());
+        sw.resume();
+        Thread.sleep(3000);
+        sw.suspend();
+        // Time 2 (ok)
+        System.out.println(sw.getTime());
+        Thread.sleep(4000);
+        // Time 2 (again, ok)
+        System.out.println(sw.getTime());
+        Thread.sleep(5000);
+        sw.stop();
+        // Time 2 (should be, but is Time 3 => NOT ok)
+        System.out.println(sw.getTime());
+suspend/resume is like a pause, where time counter doesn't continue. So a following stop()-call shouldn't increase the time counter, should it?
+

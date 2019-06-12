@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nCalling the iterator method of ListPopulation returns an iterator of the protected modifiable list. Before returning the iterator we should wrap it in an unmodifiable list.\n\n", 
+	"remain":"\n\nCalling the iterator method of ListPopulation returns an iterator of the protected modifiable list. Before returning the iterator we should wrap it in an unmodifiable list.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

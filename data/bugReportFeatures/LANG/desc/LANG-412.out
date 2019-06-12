@@ -1,0 +1,4 @@
+
+
+Appending a null value with fixed width causes a null pointer exception if getNullText() has not been set.
+

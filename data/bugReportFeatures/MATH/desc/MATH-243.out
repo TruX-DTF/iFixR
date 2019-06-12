@@ -1,0 +1,4 @@
+
+
+The gcd method should throw an Exception for gcd(Integer.MIN_VALUE, 0), like for gcd(Integer.MIN_VALUE, Integer.MIN_VALUE). The method should only return nonnegative results.
+

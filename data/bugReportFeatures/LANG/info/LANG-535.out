@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nA semicolon is introduced into the class name at the end for all arrays...\nString sArray[] = new String[2];\nsArray[0] = \"mark\";\nsArray[1] = \"is cool\";\nString simpleString = \"chris\";\nassertEquals(\"String\", ClassUtils.getShortClassName(simpleString, null));\nassertEquals(\"String;\", ClassUtils.getShortClassName(sArray, null));\n\n", 
+	"remain":"\n\nA semicolon is introduced into the class name at the end for all arrays...\nsArray[1] = \"is cool\";\nassertEquals(\"String\", ClassUtils.getShortClassName(simpleString, null));\n", 
+	"source":"String sArray[] = new String[2];\nsArray[0] = \"mark\";\nsArray[1] = \"is cool\";\nString simpleString = \"chris\";\nassertEquals(\"String\", ClassUtils.getShortClassName(simpleString, null));\nassertEquals(\"String;\", ClassUtils.getShortClassName(sArray, null));", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

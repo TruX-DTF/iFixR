@@ -1,0 +1,15 @@
+
+
+As reported by Jeff Hain:
+pow(double,double):
+Math.pow(-1.0,5.000000000000001E15) = -1.0
+FastMath.pow(-1.0,5.000000000000001E15) = 1.0
+===> This is due to considering that power is an even
+integer if it is >= 2^52, while you need to test
+that it is >= 2^53 for it.
+===> replace
+"if (y >= TWO_POWER_52 || y <= -TWO_POWER_52)"
+with
+"if (y >= 2*TWO_POWER_52 || y <= -2*TWO_POWER_52)"
+and that solves it.
+

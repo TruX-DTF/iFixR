@@ -1,0 +1,27 @@
+
+
+I found a bug in the toDouble() method of the Dfp class.
+If the Dfp's value is 0 "zero", the toDouble() method returns a  negative infini.
+This is because the double value returned has an exposant equal to 0xFFF 
+and a significand is equal to 0.
+In the IEEE754 this is a -inf.
+To be equal to zero, the exposant and the significand must be equal to zero.
+A simple test case is :
+----------------------------------------------
+import org.apache.commons.math.dfp.DfpField;
+public class test {
+	/**
+
+@param args
+	 */
+	public static void main(String[] args) 
+{
+		DfpField field = new DfpField(100);
+		System.out.println("toDouble value of getZero() ="+field.getZero().toDouble()+
+				"\ntoDouble value of newDfp(0.0) ="+
+				field.newDfp(0.0).toDouble());
+	}
+}
+
+May be the simplest way to fix it is to test the zero equality at the begin of the toDouble() method, to be able to return the correctly signed zero ?
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe four special cases +/-0 for both x and y should give the same values as Math.atan2 and FastMath.atan2. However, they give NaN for the value in all cases.\n\n", 
+	"remain":"\n\nThe four special cases +/-0 for both x and y should give the same values as Math.atan2 and FastMath.atan2. However, they give NaN for the value in all cases.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

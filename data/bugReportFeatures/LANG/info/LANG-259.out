@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nint org.apache.commons.lang.enums.ValuedEnum.compareTo(Object other)\n is not typesafe - if the int-values are the same, it will return \"0\" even for two totally different sub-classes of ValuedEnum\n\n", 
+	"remain":"\n\nint org.apache.commons.lang.enums.ValuedEnum.compareTo(Object other)\n is not typesafe - if the int-values are the same, it will return \"0\" even for two totally different sub-classes of ValuedEnum\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

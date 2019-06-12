@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nFDP does not handled unterminated quotes the same way as SimpleDateFormat\nFor example:\nFormat: 'd'd'\nDate: d3\nThis should fail to parse the format and date but it actually works.\nThe format is parsed as:\nPattern: d(\\p\n{IsNd}\n++)\n\n", 
+	"remain":"\n\nFDP does not handled unterminated quotes the same way as SimpleDateFormat\nFor example:\nFormat: 'd'd'\nDate: d3\nThis should fail to parse the format and date but it actually works.\nThe format is parsed as:\nPattern: d(\\p\n{IsNd}\n++)\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

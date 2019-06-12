@@ -1,0 +1,5 @@
+
+
+The SimpleDateFormat Javadoc does not treat white-space specially, however FastDateParser treats a single white-space as being any number of white-space characters.
+This means that FDP will parse dates that fail when parsed by SDP.
+

@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java b/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java
+index 714f421..6e82bee 100644
+--- a/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java
++++ b/src/main/java/org/apache/commons/math/analysis/function/Gaussian.java
+@@ -179,7 +179,7 @@ public class Gaussian implements DifferentiableUnivariateRealFunction {
+             if (param.length != 3) {
+                 throw new DimensionMismatchException(param.length, 3);
+             }
+-            if (param[2] <= 0) {
++            if (param[2]==0) {
+                 throw new NotStrictlyPositiveException(param[2]);
+             }
+         }

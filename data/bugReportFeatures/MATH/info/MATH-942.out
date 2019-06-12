@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nCreating an array with Array.newInstance(singletons.get(0).getClass(), sampleSize) in DiscreteDistribution.sample(int) is risky. An exception will be thrown if:\n\nsingleons.get(0) is of type T1, an sub-class of T, and\nDiscreteDistribution.sample() returns an object which is of type T, but not of type T1.\n\nTo reproduce:\n\nList<Pair<Object,Double>> list = new ArrayList<Pair<Object, Double>>();\nlist.add(new Pair<Object, Double>(new Object() {}, new Double(0)));\nlist.add(new Pair<Object, Double>(new Object() {}, new Double(1)));\nnew DiscreteDistribution<Object>(list).sample(1);\n\n\nAttaching a patch.\n\n", 
+	"remain":"\n\nCreating an array with Array.newInstance(singletons.get(0).getClass(), sampleSize) in DiscreteDistribution.sample(int) is risky. An exception will be thrown if:\n\nsingleons.get(0) is of type T1, an sub-class of T, and\nDiscreteDistribution.sample() returns an object which is of type T, but not of type T1.\n\nTo reproduce:\n\n\n\nAttaching a patch.\n", 
+	"source":"List<Pair<Object,Double>> list = new ArrayList<Pair<Object, Double>>();\nlist.add(new Pair<Object, Double>(new Object() {}\nlist.add(new Pair<Object, Double>(new Object() {}, new Double(0)));\nlist.add(new Pair<Object, Double>(new Object() {}\nlist.add(new Pair<Object, Double>(new Object() {}, new Double(1)));\nnew DiscreteDistribution<Object>(list).sample(1);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

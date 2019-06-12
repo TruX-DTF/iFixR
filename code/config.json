@@ -1,0 +1,27 @@
+{
+
+
+  "learning_rate": 0.03,
+  "feature_fraction":0.8,
+  "bagging_fraction":0.5,
+
+  "boosting":"gbdt",
+  "min_gain_to_split":10,
+
+
+
+
+  "nthread": 8,
+
+
+  "objective": "binary",
+  "metric": [
+    "rmse"
+  ],
+
+
+  "verbose": -1,
+
+  "boost_from_average": false
+
+}

@@ -1,0 +1,8 @@
+
+
+org.apache.commons.math.linear.RealMatrixImpl#operate tries to create a result vector that always has the same length as the input vector. This can result in runtime exceptions if the matrix is non-square and it always yields incorrect results if the matrix is non-square. The correct behaviour would of course be to create a vector with the same length as the row dimension of the matrix.
+Thus line 640 in RealMatrixImpl.java should read
+double[] out = new double[nRows];
+instead of
+double[] out = new double[v.length];
+

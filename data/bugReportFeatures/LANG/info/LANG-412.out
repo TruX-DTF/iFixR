@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nAppending a null value with fixed width causes a null pointer exception if getNullText() has not been set.\n\n", 
+	"remain":"\n\nAppending a null value with fixed width causes a null pointer exception if getNullText() has not been set.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nFollowing test (in EntitiesTest.java) fails:\n    public void testNumberOverflow() throws Exception \n{\n        doTestUnescapeEntity(\"&#12345678;\", \"&#12345678;\");\n        doTestUnescapeEntity(\"x&#12345678;y\", \"x&#12345678;y\");\n        doTestUnescapeEntity(\"&#x12345678;\", \"&#x12345678;\");\n        doTestUnescapeEntity(\"x&#x12345678;y\", \"x&#x12345678;y\");\n    }\n\nMaximim value for char is 0xFFFF, so &#12345678; is invalid entity reference, and so should be left as is.\n\n", 
+	"remain":"\n\nFollowing test (in EntitiesTest.java) fails:\n        doTestUnescapeEntity(\"&#12345678;\", \"&#12345678;\");\n        doTestUnescapeEntity(\"&#x12345678;\", \"&#x12345678;\");\n    }\n\nMaximim value for char is 0xFFFF, so &#12345678; is invalid entity reference, and so should be left as is.\n", 
+	"source":"public void testNumberOverflow() throws Exception \n{\n        doTestUnescapeEntity(\"&#12345678;\", \"&#12345678;\");\n        doTestUnescapeEntity(\"x&#12345678;y\", \"x&#12345678;y\");\n        doTestUnescapeEntity(\"&#x12345678;\", \"&#x12345678;\");\n        doTestUnescapeEntity(\"x&#x12345678;y\", \"x&#x12345678;y\");\n    }", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

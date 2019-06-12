@@ -1,0 +1,4 @@
+
+
+When comparing a BigDecimal, the comparing is made using equals, not compareTo, which is more appropriate in the case of BigDecimal.  
+

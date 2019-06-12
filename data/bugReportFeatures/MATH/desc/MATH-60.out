@@ -1,0 +1,38 @@
+
+
+Hello,
+I find illogical returned result from function "Fraction parse(String source, 
+ParsePostion pos)" (in class ProperFractionFormat of the Fraction Package) of 
+the Commons Math library. Please see the following code segment for more 
+details:
+"
+ProperFractionFormat properFormat = new ProperFractionFormat();
+result = null;
+String source = "1 -1 / 2";
+ParsePosition pos = new ParsePosition(0);
+//Test 1 : fail 
+public void testParseNegative(){
+   String source = "-1 -2 / 3";
+   ParsePosition pos = new ParsePosition(0);
+   Fraction actual = properFormat.parse(source, pos);
+   assertNull(actual);
+}
+// Test2: success
+public void testParseNegative(){
+   String source = "-1 -2 / 3";
+   ParsePosition pos = new ParsePosition(0);
+   Fraction actual = properFormat.parse(source, pos);  // return Fraction 1/3
+   assertEquals(1, source.getNumerator());
+   assertEquals(3, source.getDenominator());
+}
+"
+Note: Similarly, when I passed in the following inputs: 
+  input 2: (source = “1 2 / -3”, pos = 0)
+  input 3: ( source = ” -1 -2 / 3”, pos = 0)
+Function "Fraction parse(String, ParsePosition)" returned Fraction 1/3 (means 
+the result Fraction had numerator = 1 and  denominator = 3)for all 3 inputs 
+above.
+I think the function does not handle parsing the numberator/ denominator 
+properly incase input string provide invalid numerator/denominator. 
+Thank you!
+

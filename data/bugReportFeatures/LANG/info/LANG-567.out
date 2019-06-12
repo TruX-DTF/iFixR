@@ -1,0 +1,8 @@
+{
+	"desc":"\n\nArrayUtils.addAll(T[] array1, T... array2) does not handle mixed array types very well.\nThe stack trace for \nNumber[] st = ArrayUtils.addAll(new Integer[]\n{1}\n, new Long[]\n{2L}\n);\nstarts:\njava.lang.ArrayStoreException\n	at java.lang.System.arraycopy(Native Method)\n	at org.apache.commons.lang3.ArrayUtils.addAll(ArrayUtils.java:2962)\nwhich is not all that obvious.\nIt would be a lot clearer if the method threw an IlegalArgumentException or similar.\n\n", 
+	"remain":"\n\nArrayUtils.addAll(T[] array1, T... array2) does not handle mixed array types very well.\nThe stack trace for \nNumber[] st = ArrayUtils.addAll(new Integer[]\n{1}\n, new Long[]\n{2L}\n);\nstarts:\njava.lang.ArrayStoreException\nwhich is not all that obvious.\nIt would be a lot clearer if the method threw an IlegalArgumentException or similar.\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[
+		"at java.lang.System.arraycopy(Native Method)\nat org.apache.commons.lang3.ArrayUtils.addAll(ArrayUtils.java:2962)\n" ], 
+	"enums":[]}

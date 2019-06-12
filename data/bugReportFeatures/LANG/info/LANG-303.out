@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nReported by FindBugs.\nEither we need to make the Rule interface Serializable, or make mRules transient and add deserializing code to kick off init().\n\n", 
+	"remain":"\n\nReported by FindBugs.\nEither we need to make the Rule interface Serializable, or make mRules transient and add deserializing code to kick off init().\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

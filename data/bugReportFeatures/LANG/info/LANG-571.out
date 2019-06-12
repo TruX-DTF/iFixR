@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nArrayUtils.add(T[] array, T element) can create an unexpected ClassCastException.\nFor example, the following code compiles without a warning:\n\nString[] sa = ArrayUtils.add(stringArray, aString);\n\n\nand works fine, provided at least one of the parameters is non-null. However, if both parameters are null, the add() method returns an Object[] array, hence the Exception.\nIf both parameters are null, it's not possible to determine the correct array type to return, so it seems to me this should be disallowed.\nI think the method ought to be changed to throw IllegalParameterException when both parameters are null.\n\n", 
+	"remain":"\n\nArrayUtils.add(T[] array, T element) can create an unexpected ClassCastException.\nFor example, the following code compiles without a warning:\n\n\n\nand works fine, provided at least one of the parameters is non-null. However, if both parameters are null, the add() method returns an Object[] array, hence the Exception.\nIf both parameters are null, it's not possible to determine the correct array type to return, so it seems to me this should be disallowed.\nI think the method ought to be changed to throw IllegalParameterException when both parameters are null.\n", 
+	"source":"String[] sa = ArrayUtils.add(stringArray, aString);", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

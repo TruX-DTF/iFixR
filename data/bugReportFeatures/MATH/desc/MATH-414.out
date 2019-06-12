@@ -1,0 +1,23 @@
+
+
+I get a ConvergenceException in  NormalDistributionImpl.cumulativeProbability() for very large/small parameters including Infinity, -Infinity.
+For instance in the following code:
+	@Test
+	public void testCumulative() {
+		final NormalDistribution nd = new NormalDistributionImpl();
+		for (int i = 0; i < 500; i++) {
+			final double val = Math.exp;
+			try 
+{
+				System.out.println("val = " + val + " cumulative = " + nd.cumulativeProbability(val));
+			}
+ catch (MathException e) 
+{
+				e.printStackTrace();
+				fail();
+			}
+		}
+	}
+In version 2.0, I get no exception. 
+My suggestion is to change in the implementation of cumulativeProbability(double) to catch all ConvergenceException (and return for very large and very small values), not just MaxIterationsExceededException.
+

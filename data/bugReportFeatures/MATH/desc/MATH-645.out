@@ -1,0 +1,36 @@
+
+
+The following piece of code
+
+import org.apache.commons.math.linear.OpenMapRealVector;
+import org.apache.commons.math.linear.RealVector;
+
+public class DemoBugOpenMapRealVector {
+    public static void main(String[] args) {
+        final RealVector u = new OpenMapRealVector(3, 1E-6);
+        u.setEntry(0, 1.);
+        u.setEntry(1, 0.);
+        u.setEntry(2, 2.);
+        final RealVector v = new OpenMapRealVector(3, 1E-6);
+        v.setEntry(0, 0.);
+        v.setEntry(1, 3.);
+        v.setEntry(2, 0.);
+        System.out.println(u);
+        System.out.println(v);
+        System.out.println(u.ebeMultiply(v));
+    }
+}
+
+
+raises an exception
+
+org.apache.commons.math.linear.OpenMapRealVector@7170a9b6
+Exception in thread "main" org.apache.commons.math.MathRuntimeException$6: map has been modified while iterating
+	at org.apache.commons.math.MathRuntimeException.createConcurrentModificationException(MathRuntimeException.java:373)
+	at org.apache.commons.math.util.OpenIntToDoubleHashMap$Iterator.advance(OpenIntToDoubleHashMap.java:564)
+	at org.apache.commons.math.linear.OpenMapRealVector.ebeMultiply(OpenMapRealVector.java:372)
+	at org.apache.commons.math.linear.OpenMapRealVector.ebeMultiply(OpenMapRealVector.java:1)
+	at DemoBugOpenMapRealVector.main(DemoBugOpenMapRealVector.java:17)
+
+
+

@@ -1,0 +1,36 @@
+
+
+I guess (but I could be wrong) that SimplexSolver does not always return the optimal solution, nor satisfies all the constraints...
+Consider this LP:
+max: 0.8 x0 + 0.2 x1 + 0.7 x2 + 0.3 x3 + 0.6 x4 + 0.4 x5;
+r1: x0 + x2 + x4 = 23.0;
+r2: x1 + x3 + x5 = 23.0;
+r3: x0 >= 10.0;
+r4: x2 >= 8.0;
+r5: x4 >= 5.0;
+LPSolve returns 25.8, with x0 = 10.0, x1 = 0.0, x2 = 8.0, x3 = 0.0, x4 = 5.0, x5 = 23.0;
+The same LP expressed in Apache commons math is:
+LinearObjectiveFunction f = new LinearObjectiveFunction(new double[] 
+{ 0.8, 0.2, 0.7, 0.3, 0.6, 0.4 }
+, 0 );
+Collection<LinearConstraint> constraints = new ArrayList<LinearConstraint>();
+constraints.add(new LinearConstraint(new double[] 
+{ 1, 0, 1, 0, 1, 0 }
+, Relationship.EQ, 23.0));
+constraints.add(new LinearConstraint(new double[] 
+{ 0, 1, 0, 1, 0, 1 }
+, Relationship.EQ, 23.0));
+constraints.add(new LinearConstraint(new double[] 
+{ 1, 0, 0, 0, 0, 0 }
+, Relationship.GEQ, 10.0));
+constraints.add(new LinearConstraint(new double[] 
+{ 0, 0, 1, 0, 0, 0 }
+, Relationship.GEQ, 8.0));
+constraints.add(new LinearConstraint(new double[] 
+{ 0, 0, 0, 0, 1, 0 }
+, Relationship.GEQ, 5.0));
+RealPointValuePair solution = new SimplexSolver().optimize(f, constraints, GoalType.MAXIMIZE, true);
+that returns 22.20, with x0 = 15.0, x1 = 23.0, x2 = 8.0, x3 = 0.0, x4 = 0.0, x5 = 0.0;
+Is it possible SimplexSolver is buggy that way? The returned value is 22.20 instead of 25.8, and the last constraint (x4 >= 5.0) is not satisfied...
+Am I using the interface wrongly?
+

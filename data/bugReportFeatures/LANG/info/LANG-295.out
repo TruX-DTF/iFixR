@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nWhile fixing LANG-294 I noticed that there are two other places in StrBuilder that reference thisBuf.length and unless I'm mistaken they shouldn't.\n\n", 
+	"remain":"\n\nWhile fixing LANG-294 I noticed that there are two other places in StrBuilder that reference thisBuf.length and unless I'm mistaken they shouldn't.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

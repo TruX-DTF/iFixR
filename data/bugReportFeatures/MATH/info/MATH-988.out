@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nWhen calling SubLine.intersection() with two lines that not intersect, then a NullPointerException is thrown in Line.toSubSpace(). This bug is in the twod and threed implementations.\nThe attached patch fixes both implementations and adds the required test cases.\n\n", 
+	"remain":"\n\nWhen calling SubLine.intersection() with two lines that not intersect, then a NullPointerException is thrown in Line.toSubSpace(). This bug is in the twod and threed implementations.\nThe attached patch fixes both implementations and adds the required test cases.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

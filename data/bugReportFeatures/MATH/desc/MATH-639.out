@@ -1,0 +1,27 @@
+
+
+building a rotation from the following vector pairs leads to NaN:
+u1 = -4921140.837095533, -2.1512094250440013E7, -890093.279426377
+u2 = -2.7238580938724895E9, -2.169664921341876E9, 6.749688708885301E10
+v1 = 1, 0, 0
+v2 = 0, 0, 1
+The constructor first changes the (v1, v2) pair into (v1', v2') ensuring the following scalar products hold:
+ <v1'|v1'> == <u1|u1>
+ <v2'|v2'> == <u2|u2>
+ <u1 |u2>  == <v1'|v2'>
+Once the (v1', v2') pair has been computed, we compute the cross product:
+  k = (v1' - u1)^(v2' - u2)
+and the scalar product:
+  c = <k | (u1^u2)>
+By construction, c is positive or null and the quaternion axis we want to build is q = k/[2*sqrt(c)].
+c should be null only if some of the vectors are aligned, and this is dealt with later in the algorithm.
+However, there are numerical problems with the vector above with the way these computations are done, as shown
+by the following comparisons, showing the result we get from our Java code and the result we get from manual
+computation with the same formulas but with enhanced precision:
+commons math:   k = 38514476.5,            -84.,                           -1168590144
+high precision: k = 38514410.36093388...,  -0.374075245201180409222711..., -1168590152.10599715208...
+and it becomes worse when computing c because the vectors are almost orthogonal to each other, hence inducing additional cancellations. We get:
+commons math    c = -1.2397173627587605E20
+high precision: c =  558382746168463196.7079627...
+We have lost ALL significant digits in cancellations, and even the sign is wrong!
+

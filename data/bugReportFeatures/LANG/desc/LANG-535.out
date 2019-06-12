@@ -1,0 +1,10 @@
+
+
+A semicolon is introduced into the class name at the end for all arrays...
+String sArray[] = new String[2];
+sArray[0] = "mark";
+sArray[1] = "is cool";
+String simpleString = "chris";
+assertEquals("String", ClassUtils.getShortClassName(simpleString, null));
+assertEquals("String;", ClassUtils.getShortClassName(sArray, null));
+

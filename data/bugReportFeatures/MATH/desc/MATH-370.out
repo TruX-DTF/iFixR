@@ -1,0 +1,6 @@
+
+
+In "MathUtils", some "equals" methods will return true if both argument are NaN.
+Unless I'm mistaken, this contradicts the IEEE standard.
+If nobody objects, I'm going to make the changes.
+

@@ -1,0 +1,17 @@
+
+
+Creating an array with Array.newInstance(singletons.get(0).getClass(), sampleSize) in DiscreteDistribution.sample(int) is risky. An exception will be thrown if:
+
+singleons.get(0) is of type T1, an sub-class of T, and
+DiscreteDistribution.sample() returns an object which is of type T, but not of type T1.
+
+To reproduce:
+
+List<Pair<Object,Double>> list = new ArrayList<Pair<Object, Double>>();
+list.add(new Pair<Object, Double>(new Object() {}, new Double(0)));
+list.add(new Pair<Object, Double>(new Object() {}, new Double(1)));
+new DiscreteDistribution<Object>(list).sample(1);
+
+
+Attaching a patch.
+

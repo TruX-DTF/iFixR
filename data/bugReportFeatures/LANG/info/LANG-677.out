@@ -1,0 +1,8 @@
+{
+	"desc":"\n\nHi, I think I found a bug in the DateUtils class in the method isSameLocalTime.\nExample: \nCalendar a = Calendar.getInstance();\na.setTimeInMillis(1297364400000L);\nCalendar b = Calendar.getInstance();\nb.setTimeInMillis(1297321200000L);\nAssert.assertFalse(DateUtils.isSameLocalTime(a, b));\nThis is because the method compares \ncal1.get(Calendar.HOUR) == cal2.get(Calendar.HOUR) \nbut I think it has to be \ncal1.get(Calendar.HOUR_OF_DAY) == cal2.get(Calendar.HOUR_OF_DAY)\n\n", 
+	"remain":"\n\nHi, I think I found a bug in the DateUtils class in the method isSameLocalTime.\nExample: \nb.setTimeInMillis(1297321200000L);\nThis is because the method compares \nbut I think it has to be \n", 
+	"source":"Calendar a = Calendar.getInstance();\na.setTimeInMillis(1297364400000L);\nCalendar b = Calendar.getInstance();\nb.setTimeInMillis(1297321200000L);\nAssert.assertFalse(DateUtils.isSameLocalTime(a, b));", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[
+		"a.setTimeInMillis(1297364400000L);\nCalendar b = Calendar.getInstance();\nb.setTimeInMillis(1297321200000L);\nAssert.assertFalse(DateUtils.isSameLocalTime(a, b));\nThis is because the method compares \ncal1.get(Calendar.HOUR) == cal2.get(Calendar.HOUR) \nbut I think it has to be \ncal1.get(Calendar.HOUR_OF_DAY) == cal2.get(Calendar.HOUR_OF_DAY)\n" ]}

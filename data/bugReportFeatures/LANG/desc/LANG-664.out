@@ -1,0 +1,22 @@
+
+
+"1.1L"  is not a Java Number . but NumberUtils.isNumber(String) return true.
+perhaps change:
+
+            if (chars[i] == 'l'
+                || chars[i] == 'L') {
+                // not allowing L with an exponent
+                return foundDigit && !hasExp;
+            }
+
+
+to:
+
+            if (chars[i] == 'l'
+                || chars[i] == 'L') {
+                // not allowing L with an exponent
+                return foundDigit && !hasExp && !hasDecPoint;
+            }
+
+
+

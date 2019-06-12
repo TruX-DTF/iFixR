@@ -1,0 +1,30 @@
+
+
+I used this matrix:
+        double[][] cv = {
+
+{0.40434286, 0.09376327, 0.30328980, 0.04909388}
+,
+
+{0.09376327, 0.10400408, 0.07137959, 0.04762857}
+,
+
+{0.30328980, 0.07137959, 0.30458776, 0.04882449},
+            {0.04909388, 0.04762857, 0.04882449, 0.07543265}
+        };
+
+And it works fine, because it is symmetric positive definite
+
+I tried this matrix:
+
+        double[][] cv = {
+            {0.40434286, -0.09376327, 0.30328980, 0.04909388},
+            {-0.09376327, 0.10400408, 0.07137959, 0.04762857},
+            {0.30328980, 0.07137959, 0.30458776, 0.04882449}
+,
+            {0.04909388, 0.04762857, 0.04882449, 0.07543265}
+        };
+And it should throw an exception but it does not.  I tested the matrix in R and R's cholesky decomposition method returns that the matrix is not symmetric positive definite.
+Obviously your code is not catching this appropriately.
+By the way (in my opinion) the use of exceptions to check these conditions is not the best design or use for exceptions.  If you are going to force the use to try and catch these exceptions at least provide methods  to test the conditions prior to the possibility of the exception.  
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nWhen MathArrays.linearCombination is passed arguments with length 1, it throws an ArrayOutOfBoundsException. This is caused by this line:\ndouble prodHighNext = prodHigh[1];\nlinearCombination should check the length of the arguments and fall back to simple multiplication if length == 1.\n\n", 
+	"remain":"\n\nWhen MathArrays.linearCombination is passed arguments with length 1, it throws an ArrayOutOfBoundsException. This is caused by this line:\nlinearCombination should check the length of the arguments and fall back to simple multiplication if length == 1.\n", 
+	"source":"double prodHighNext = prodHigh[1];", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

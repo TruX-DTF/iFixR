@@ -1,0 +1,12 @@
+
+
+FDP does not handled unterminated quotes the same way as SimpleDateFormat
+For example:
+Format: 'd'd'
+Date: d3
+This should fail to parse the format and date but it actually works.
+The format is parsed as:
+Pattern: d(\p
+{IsNd}
+++)
+

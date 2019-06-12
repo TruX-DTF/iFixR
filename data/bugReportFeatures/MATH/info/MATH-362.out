@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nLevenbergMarquardtOptimizer ignores the VectorialConvergenceChecker parameter passed to it. This makes it hard to specify custom stopping criteria for the optimizer.\n\n", 
+	"remain":"\n\nLevenbergMarquardtOptimizer ignores the VectorialConvergenceChecker parameter passed to it. This makes it hard to specify custom stopping criteria for the optimizer.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

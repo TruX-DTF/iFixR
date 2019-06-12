@@ -1,0 +1,24 @@
+
+
+We are using the FDistributionImpl from the commons.math project to do
+some statistical calculations, namely receiving the upper and lower
+boundaries of a confidence interval. Everything is working fine and the
+results are matching our reference calculations.
+However, the FDistribution behaves strange if a
+denominatorDegreeOfFreedom of 2 is used, with an alpha-value of 0.95.
+This results in an IllegalArgumentsException, stating:
+Invalid endpoint parameters:  lowerBound=0.0 initial=Infinity
+upperBound=1.7976931348623157E308
+coming from
+org.apache.commons.math.analysis.UnivariateRealSolverUtils.bracket
+The problem is the 'initial' parameter to that function, wich is
+POSITIVE_INFINITY and therefore not within the boundaries. I already
+pinned down the problem to the FDistributions getInitialDomain()-method,
+wich goes like:
+        return getDenominatorDegreesOfFreedom() /
+                    (getDenominatorDegreesOfFreedom() - 2.0);
+Obviously, in case of denominatorDegreesOfFreedom == 2, this must lead
+to a division-by-zero, resulting in POSTIVE_INFINITY. The result of this
+operation is then directly passed into the
+UnivariateRealSolverUtils.bracket() - method as second argument.
+

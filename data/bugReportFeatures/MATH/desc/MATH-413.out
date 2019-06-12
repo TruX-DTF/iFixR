@@ -1,0 +1,32 @@
+
+
+Revision 990792 contains changes triggered the following issues:
+
+MATH-394
+MATH-397
+MATH-404
+
+This issue collects the currently still unsatisfactory code (not necessarily sorted in order of annoyance):
+
+"BrentOptimizer": a specific convergence checker must be used. "LevenbergMarquardtOptimizer" also has specific convergence checks.
+Trying to make convergence checking independent of the optimization algorithm creates problems (conceptual and practical):
+	
+See "BrentOptimizer" and "LevenbergMarquardtOptimizer", the algorithm passes "points" to the convergence checker, but the actual meaning of the points can very well be different in the caller (optimization algorithm) and the callee (convergence checker).
+In "PowellOptimizer" the line search ("BrentOptimizer") tolerances depend on the tolerances within the main algorithm. Since tolerances come with "ConvergenceChecker" and so can be changed at any time, it is awkward to adapt the values within the line search optimizer without exposing its internals ("BrentOptimizer" field) to the enclosing class ("PowellOptimizer").
+
+
+Given the numerous changes, some Javadoc comments might be out-of-sync, although I did try to update them all.
+Class "DirectSearchOptimizer" (in package "optimization.direct") inherits from class "AbstractScalarOptimizer" (in package "optimization.general").
+Some interfaces are defined in package "optimization" but their base implementations (abstract class that contain the boiler-plate code) are in package "optimization.general" (e.g. "DifferentiableMultivariateVectorialOptimizer" and "BaseAbstractVectorialOptimizer").
+No check is performed to ensure the the convergence checker has been set (see e.g. "BrentOptimizer" and "PowellOptimizer"); if it hasn't there will be a NPE. The alternative is to initialize a default checker that will never be used in case the user had intended to explicitly sets the checker.
+"NonLinearConjugateGradientOptimizer": Ugly workaround for the checked "ConvergenceException".
+Everywhere, we trail the checked "FunctionEvaluationException" although it is never used.
+There remains some duplicate code (such as the "multi-start loop" in the various "MultiStart..." implementations).
+The "ConvergenceChecker" interface is very general (the "converged" method can take any number of "...PointValuePair"). However there remains a "semantic" problem: One cannot be sure that the list of points means the same thing for the caller of "converged" and within the implementation of the "ConvergenceChecker" that was independently set.
+It is not clear whether it is wise to aggregate the counter of gradient evaluations to the function evaluation counter. In "LevenbergMarquartdOptimizer" for example, it would be unfair to do so. Currently I had to remove all tests referring to gradient and Jacobian evaluations.
+In "AbstractLeastSquaresOptimizer" and "LevenbergMarquardtOptimizer", occurences of "OptimizationException" were replaced by the unchecked "ConvergenceException" but in some cases it might not be the most appropriate one.
+"MultiStartUnivariateRealOptimizer": in the other classes ("MultiStartMultivariate...") similar to this one, the randomization is on the firts-guess value while in this class, it is on the search interval. I think that here also we should randomly choose the start value (within the user-selected interval).
+The Javadoc utility raises warnings (see output of "mvn site") which I couldn't figure out how to correct.
+Some previously existing classes and interfaces have become no more than a specialisation of new "generics" classes; it might be interesting to remove them in order to reduce the number of classes and thus limit the potential for confusion.
+
+

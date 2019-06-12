@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nString.to*Case() is locale-sensitive, this is usually not intended for case-insensitive comparisions. Please see Common Bug #3 for details.\n\n", 
+	"remain":"\n\nString.to*Case() is locale-sensitive, this is usually not intended for case-insensitive comparisions. Please see Common Bug #3 for details.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

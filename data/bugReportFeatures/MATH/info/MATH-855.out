@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nBrentOptimizer (package \"o.a.c.m.optimization.univariate\") does not check that the point it is going to return is indeed the best one it has encountered. Indeed, the last evaluated point might be slightly worse than the one before last.\n\n", 
+	"remain":"\n\nBrentOptimizer (package \"o.a.c.m.optimization.univariate\") does not check that the point it is going to return is indeed the best one it has encountered. Indeed, the last evaluated point might be slightly worse than the one before last.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

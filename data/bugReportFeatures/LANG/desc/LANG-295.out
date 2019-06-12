@@ -1,0 +1,4 @@
+
+
+While fixing LANG-294 I noticed that there are two other places in StrBuilder that reference thisBuf.length and unless I'm mistaken they shouldn't.
+

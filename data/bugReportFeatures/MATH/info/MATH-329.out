@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nDrop in Replacement of 1.2 with 2.0 not possible because all getPct calls will be cummulative without code change\nFrequency.java\n   /**\n\nReturns the percentage of values that are equal to v\n@deprecated replaced by \n{@link #getPct(Comparable)}\n as of 2.0\n     */\n    @Deprecated\n    public double getPct(Object v) \n{\n        return getCumPct((Comparable<?>) v);\n    }\n\n\n", 
+	"remain":"\n\nDrop in Replacement of 1.2 with 2.0 not possible because all getPct calls will be cummulative without code change\nFrequency.java\n\n@deprecated replaced by \n as of 2.0\n    @Deprecated\n    public double getPct(Object v) \n        return getCumPct((Comparable<?>) v);\n", 
+	"source":"/**\n\nReturns the percentage of values that are equal to v\n@deprecated replaced by \n{@link #getPct(Comparable)}\n as of 2.0\n     */\n    public double getPct(Object v) \n{\n        return getCumPct((Comparable<?>) v);\n    }", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

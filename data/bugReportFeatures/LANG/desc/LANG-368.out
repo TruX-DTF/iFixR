@@ -1,0 +1,7 @@
+
+
+The FastDateFormat getDateInstance() and getDateTimeInstance()  methods create the HashMap key from various items including the locale.
+If the locale is null, then it is not made part of the key, but the stored object is created using the current default locale.
+If the Locale is changed subsequently, then the wrong locale is applied.
+Patch for test case to follow.
+

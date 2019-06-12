@@ -1,0 +1,45 @@
+
+
+the L_infinity norm of a finite dimensional vector is just the max of the absolute value of its entries.
+The current implementation in ArrayRealVector has a typo:
+
+    public double getLInfNorm() {
+        double max = 0;
+        for (double a : data) {
+            max += Math.max(max, Math.abs(a));
+        }
+        return max;
+    }
+
+
+the += should just be an =.
+There is sadly a unit test assuring us that this is the correct behavior (effectively a regression-only test, not a test for correctness).
+Worse, the implementation in OpenMapRealVector is not even positive semi-definite:
+
+   
+    public double getLInfNorm() {
+        double max = 0;
+        Iterator iter = entries.iterator();
+        while (iter.hasNext()) {
+            iter.advance();
+            max += iter.value();
+        }
+        return max;
+    }
+
+
+I would suggest that this method be moved up to the AbstractRealVector superclass and implemented using the sparseIterator():
+
+  public double getLInfNorm() {
+    double norm = 0;
+    Iterator<Entry> it = sparseIterator();
+    Entry e;
+    while(it.hasNext() && (e = it.next()) != null) {
+      norm = Math.max(norm, Math.abs(e.getValue()));
+    }
+    return norm;
+  }
+
+
+Unit tests with negative valued vectors would be helpful to check for this kind of thing in the future.
+

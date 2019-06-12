@@ -1,0 +1,5 @@
+
+
+Line.revert() only maintains ~10 digits for the direction. This becomes an issue when the line's position is evaluated far from the origin. A simple fix would be to use Vector3D.negate() for the direction.
+Also, is there a reason why Line is not immutable? It is just comprised of two vectors.
+

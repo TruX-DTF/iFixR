@@ -1,0 +1,16 @@
+
+
+DurationFormatUtils returns wrong result.  oddly, it is only when Date is set to Dec 31, 2005
+The following code will result in a String of -2 which is way off.
+I've tested against 2.1 and 2.2.
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.MONTH, Calendar.DECEMBER);
+        cal.set(Calendar.DAY_OF_MONTH, 31);
+        cal.set(Calendar.YEAR, 2005);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        String result = DurationFormatUtils.formatPeriod(cal.getTimeInMillis(), System.currentTimeMillis(), "MM");
+        System.out.println(result);
+

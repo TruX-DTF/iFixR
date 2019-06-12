@@ -1,0 +1,35 @@
+
+
+When using ExtendedMessageFormat with a custom format registry and a pattern conatining single quotes, an OutOfMemoryError will occur.
+Example that will cause error:
+ExtendedMessageFormatTest.java
+
+private static Map<String, Object> formatRegistry = new HashMap<String, Object>();    
+    static {
+        formatRegistry.put(DummyFormatFactory.DUMMY_FORMAT, new DummyFormatFactory());
+    }
+    
+    public static void main(String[] args) {
+        ExtendedMessageFormat mf = new ExtendedMessageFormat("it''s a {dummy} 'test'!", formatRegistry);
+        String formattedPattern = mf.format(new String[] {"great"});
+        System.out.println(formattedPattern);
+    }
+}
+
+
+
+The following change starting at line 421 on the 2.4 release seems to fix the problem:
+ExtendedMessageFormat.java
+CURRENT (Broken):
+if (escapingOn && c[start] == QUOTE) {
+        return appendTo == null ? null : appendTo.append(QUOTE);
+}
+
+WORKING:
+if (escapingOn && c[start] == QUOTE) {
+        next(pos);
+        return appendTo == null ? null : appendTo.append(QUOTE);
+}
+
+
+

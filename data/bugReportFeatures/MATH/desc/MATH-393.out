@@ -1,0 +1,18 @@
+
+
+In "MultiStartUnivariateRealOptimizer" (package "optimization"), the method "getResult" returns the result of the last run of the "underlying" optimizer; this last result might not be the best one, in which case it will not correspond to the value returned by the "optimize" method. This is confusing and does not seem very useful. I think that "getResult" should be defined as
+
+ 
+public double getResult() {
+    return optima[0];
+}
+
+
+and similarly
+
+public double getFunctionValue() {
+    return optimaValues[0];
+}
+
+
+

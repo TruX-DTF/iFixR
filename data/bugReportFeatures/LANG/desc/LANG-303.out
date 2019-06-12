@@ -1,0 +1,5 @@
+
+
+Reported by FindBugs.
+Either we need to make the Rule interface Serializable, or make mRules transient and add deserializing code to kick off init().
+

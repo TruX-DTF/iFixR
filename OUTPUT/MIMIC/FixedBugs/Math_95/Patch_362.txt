@@ -1,0 +1,12 @@
+diff --git a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+index e19e97a..94ca2f0 100644
+--- a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -144,7 +144,7 @@ public class FDistributionImpl
+         double ret;
+         double d = getDenominatorDegreesOfFreedom();
+             // use mean
+-            ret = d / (d - 2.0);
++            ret = d / (d + 2.0);
+         return ret;
+     }

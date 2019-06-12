@@ -1,0 +1,35 @@
+
+
+If a Calendar object is constructed in certain ways a call to Calendar.setTimeZone does not correctly change the Calendars fields.  Calling Calenar.getTime() seems to fix this problem.  While this is probably a bug in the JDK, it would be nice if DateFormatUtils was smart enough to detect/resolve this problem.
+For example, the following unit test fails:
+
+  public void testFormat_CalendarIsoMsZulu() {
+    final String dateTime = "2009-10-16T16:42:16.000Z";
+
+    // more commonly constructed with: cal = new GregorianCalendar(2009, 9, 16, 8, 42, 16)
+    // for the unit test to work in any time zone, constructing with GMT-8 rather than default locale time zone
+    GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("GMT-8"));
+    cal.clear();
+    cal.set(2009, 9, 16, 8, 42, 16);
+
+
+    FastDateFormat format = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", TimeZone.getTimeZone("GMT"));
+    assertEquals("dateTime", dateTime, format.format(cal));
+  }
+
+
+However, this unit test passes:
+
+  public void testFormat_CalendarIsoMsZulu() {
+    final String dateTime = "2009-10-16T16:42:16.000Z";
+    GregorianCalendar cal = new GregorianCalendar(TimeZone.getTimeZone("GMT-8"));
+    cal.clear();
+    cal.set(2009, 9, 16, 8, 42, 16);
+    cal.getTime();
+
+    FastDateFormat format = FastDateFormat.getInstance("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", TimeZone.getTimeZone("GMT"));
+    assertEquals("dateTime", dateTime, format.format(cal));
+  }
+
+
+

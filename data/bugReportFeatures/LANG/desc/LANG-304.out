@@ -1,0 +1,6 @@
+
+
+FindBugs pointed out:
+   UwF: Field not initialized in constructor: org.apache.commons.lang.LocaleUtils.cAvailableLocaleSet
+cAvailableSet is used directly once in the source - and if availableLocaleSet() hasn't been called it will cause a NullPointerException.
+

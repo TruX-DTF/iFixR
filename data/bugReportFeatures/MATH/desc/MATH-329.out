@@ -1,0 +1,18 @@
+
+
+Drop in Replacement of 1.2 with 2.0 not possible because all getPct calls will be cummulative without code change
+Frequency.java
+   /**
+
+Returns the percentage of values that are equal to v
+@deprecated replaced by 
+{@link #getPct(Comparable)}
+ as of 2.0
+     */
+    @Deprecated
+    public double getPct(Object v) 
+{
+        return getCumPct((Comparable<?>) v);
+    }
+
+

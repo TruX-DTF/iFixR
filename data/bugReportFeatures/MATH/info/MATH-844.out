@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe inner class \"ParameterGuesser\" in \"HarmonicFitter\" (package \"o.a.c.m.optimization.fitting\") fails to compute a usable guess for the \"amplitude\" parameter.\n\n", 
+	"remain":"\n\nThe inner class \"ParameterGuesser\" in \"HarmonicFitter\" (package \"o.a.c.m.optimization.fitting\") fails to compute a usable guess for the \"amplitude\" parameter.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

@@ -1,0 +1,16 @@
+
+
+In the following excerpt from class "PoissonDistributionImpl":
+PoissonDistributionImpl.java
+    public PoissonDistributionImpl(double p, NormalDistribution z) {
+        super();
+        setNormal(z);
+        setMean(p);
+    }
+
+
+(1) Overridable methods are called within the constructor.
+(2) The reference "z" is stored and modified within the class.
+I've encountered problem (1) in several classes while working on issue 348. In those cases, in order to remove potential problems, I copied/pasted the body of the "setter" methods inside the constructor but I think that a more elegant solution would be to remove the "setters" altogether (i.e. make the classes immutable).
+Problem (2) can also create unexpected behaviour. Is it really necessary to pass the "NormalDistribution" object; can't it be always created within the class?
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nMultiDirectional.iterateSimplex loops forever if the starting point is the correct solution.\nsee the attached test case (testMultiDirectionalCorrectStart) as an example.\n\n", 
+	"remain":"\n\nMultiDirectional.iterateSimplex loops forever if the starting point is the correct solution.\nsee the attached test case (testMultiDirectionalCorrectStart) as an example.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

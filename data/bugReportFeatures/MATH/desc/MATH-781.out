@@ -1,0 +1,5 @@
+
+
+Methode SimplexSolver.optimeze(...) gives bad results with commons-math3-3.0
+in a simple test problem. It works well in commons-math-2.2. 
+

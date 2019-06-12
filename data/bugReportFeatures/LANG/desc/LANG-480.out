@@ -1,0 +1,20 @@
+
+
+Characters that are represented as a 2 characters internaly by java are incorrectly converted by the function. The following test displays the problem quite nicely:
+import org.apache.commons.lang.*;
+public class J2 {
+    public static void main(String[] args) throws Exception {
+        // this is the utf8 representation of the character:
+        // COUNTING ROD UNIT DIGIT THREE
+        // in unicode
+        // codepoint: U+1D362
+        byte[] data = new byte[] 
+{ (byte)0xF0, (byte)0x9D, (byte)0x8D, (byte)0xA2 }
+;
+        //output is: &#55348;&#57186;
+        // should be: &#119650;
+        System.out.println("'" + StringEscapeUtils.escapeHtml(new String(data, "UTF8")) + "'");
+    }
+}
+Should be very quick to fix, feel free to drop me an email if you want a patch.
+

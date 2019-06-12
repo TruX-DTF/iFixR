@@ -1,0 +1,7 @@
+
+
+When an ODE solver manages several different event types, there are some unwanted side effects.
+If one event handler asks for a RESET_STATE (for integration state) when its eventOccurred method is called, the other event handlers that did not trigger an event in the same step are not updated correctly, due to an early return.
+As a result, when the next step is processed with a reset integration state, the forgotten event still refer to the start date of the previous state. This implies that when these event handlers will be checked for In some cases, the function defining an event g(double t, double[] y) is called with state parameters y that are completely wrong. In one case when the y array should have contained values between -1 and +1, one function call got values up to 1.0e20.
+The attached file reproduces the problem.
+

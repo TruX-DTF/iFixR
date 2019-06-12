@@ -1,0 +1,7 @@
+{
+	"desc":"\n\ncomputeKey() has an integer overflow. Since it is a sparse matrix, this is quite easily encountered long before heap space is exhausted. The attached code demonstrates the problem, which could potentially be a security vulnerability (for example, if one was to use this matrix to store access control information).\nWorkaround: never create an OpenMapRealMatrix with more cells than are addressable with an int.\n\n", 
+	"remain":"\n\ncomputeKey() has an integer overflow. Since it is a sparse matrix, this is quite easily encountered long before heap space is exhausted. The attached code demonstrates the problem, which could potentially be a security vulnerability (for example, if one was to use this matrix to store access control information).\nWorkaround: never create an OpenMapRealMatrix with more cells than are addressable with an int.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

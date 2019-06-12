@@ -1,0 +1,5 @@
+
+
+The last patch to SimplexTableau caused an automated test suite I'm running at work to go down a new code path and uncover what is hopefully the last bug remaining in the Simplex code.
+SimplexTableau was assuming an entry in the tableau had to be nonzero to indicate a basic variable, which is incorrect - the entry should have a value equal to 1.
+

@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe thread local in org.apache.commons.lang3.builder.ToStringStyle is created but never removed and no API is provided to remove it. If a webapp's use of LANG triggers the loading of this class, a reference chain will be created that will cause a memory leak on web application reload.\nSee http://markmail.org/thread/uetw2fdrsqgbh2cv for more info.\n\n", 
+	"remain":"\n\nThe thread local in org.apache.commons.lang3.builder.ToStringStyle is created but never removed and no API is provided to remove it. If a webapp's use of LANG triggers the loading of this class, a reference chain will be created that will cause a memory leak on web application reload.\nSee http://markmail.org/thread/uetw2fdrsqgbh2cv for more info.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

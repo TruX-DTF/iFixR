@@ -1,0 +1,14 @@
+
+
+In commons-lang 2.6 line 250 :
+
+ch = chars[random.nextInt(gap) + start];
+
+This line of code takes a random int to fetch a char in the chars array regardless of its size.
+(Besides start is useless here)
+Fixed version would be :
+
+//ch = chars[random.nextInt(gap)%chars.length];
+
+When user pass 0 as end or when the array is not null but empty this line ends up with an exception
+

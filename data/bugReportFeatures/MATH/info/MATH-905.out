@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nAs reported by Jeff Hain:\ncosh(double) and sinh(double):\nMath.cosh(709.783) = 8.991046692770538E307\nFastMath.cosh(709.783) = Infinity\nMath.sinh(709.783) = 8.991046692770538E307\nFastMath.sinh(709.783) = Infinity\n===> This is due to using exp( x )/2 for values of |x|\nabove 20: the result sometimes should not overflow,\nbut exp( x ) does, so we end up with some infinity.\n===> for values of |x| >= StrictMath.log(Double.MAX_VALUE),\nexp will overflow, so you need to use that instead:\nfor x positive:\ndouble t = exp(x*0.5);\nreturn (0.5*t)*t;\nfor x negative:\ndouble t = exp(-x*0.5);\nreturn (-0.5*t)*t;\n\n", 
+	"remain":"\n\nAs reported by Jeff Hain:\ncosh(double) and sinh(double):\nMath.cosh(709.783) = 8.991046692770538E307\nFastMath.cosh(709.783) = Infinity\nMath.sinh(709.783) = 8.991046692770538E307\nFastMath.sinh(709.783) = Infinity\n===> This is due to using exp( x )/2 for values of |x|\nabove 20: the result sometimes should not overflow,\nbut exp( x ) does, so we end up with some infinity.\n===> for values of |x| >= StrictMath.log(Double.MAX_VALUE),\nexp will overflow, so you need to use that instead:\nfor x positive:\nfor x negative:\ndouble t = exp(-x*0.5);\n", 
+	"source":"double t = exp(x*0.5);\nreturn (0.5*t)*t;\ndouble t = exp(-x*0.5);\nreturn (-0.5*t)*t;", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

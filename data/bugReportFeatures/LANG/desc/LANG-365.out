@@ -1,0 +1,7 @@
+
+
+The method BooleanUtils.toBoolean() has a case statement; case 3 drops through to case 4; this can cause StringIndexOutOfBoundsException, for example with the test:
+assertEquals(false, BooleanUtils.toBoolean("tru"));
+The end of case 3 should return false.
+Patch to follow for source and unit test.
+

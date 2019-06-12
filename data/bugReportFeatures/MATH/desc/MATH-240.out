@@ -1,0 +1,8 @@
+
+
+The result of MathUtils.factorial( n ) for n = 17, 18, 19 is wrong, probably because of rounding errors in the double calculations.
+Replace the first line of MathUtilsTest.testFactorial() by
+        for (int i = 1; i <= 20; i++) {
+to check all valid arguments for the long result and see the failure.
+I suggest implementing a simple loop to multiply the long result - or even using a precomputed long[] - instead of adding logarithms.
+

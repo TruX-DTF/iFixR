@@ -1,0 +1,23 @@
+
+
+I've been having trouble getting BOBYQA to minimize a function (actually a non-linear least squares fit) so as one change I increased the number of interpolation points.  It seems that anything larger than 2*dim+1 causes an error (typically at
+line 1662
+                   interpolationPoints.setEntry(nfm, ipt, interpolationPoints.getEntry(ipt, ipt));
+I'm guessing there is an off by one error in the translation from FORTRAN.  Changing the BOBYQAOptimizerTest as follows (increasing number of interpolation points by one) will cause failures.
+Bruce
+Index: src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizerTest.java
+===================================================================
+— src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizerTest.java	(revision 1221065)
++++ src/test/java/org/apache/commons/math/optimization/direct/BOBYQAOptimizerTest.java	(working copy)
+@@ -258,7 +258,7 @@
+ //        RealPointValuePair result = optim.optimize(100000, func, goal, startPoint);
+         final double[] lB = boundaries == null ? null : boundaries[0];
+         final double[] uB = boundaries == null ? null : boundaries[1];
+
+BOBYQAOptimizer optim = new BOBYQAOptimizer(2 * dim + 1);
++        BOBYQAOptimizer optim = new BOBYQAOptimizer(2 * dim + 2);
+         RealPointValuePair result = optim.optimize(maxEvaluations, func, goal, startPoint, lB, uB);
+ //        System.out.println(func.getClass().getName() + " = " 
+ //              + optim.getEvaluations() + " f(");
+
+

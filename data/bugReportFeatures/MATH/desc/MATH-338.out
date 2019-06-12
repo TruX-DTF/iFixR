@@ -1,0 +1,32 @@
+
+
+In a space application using DOP853 i detected what seems to be a bad parameter in the call to the method  initializeStep of class AdaptiveStepsizeIntegrator.
+Here, DormandPrince853Integrator is a subclass for EmbeddedRungeKuttaIntegrator which perform the call to initializeStep at the beginning of its method integrate(...)
+The problem comes from the array "scale" that is used as a parameter in the call off initializeStep(..)
+Following the theory described by Hairer in his book "Solving Ordinary Differential Equations 1 : Nonstiff Problems", the scaling should be :
+sci = Atol i + |y0i| * Rtoli
+Whereas EmbeddedRungeKuttaIntegrator uses :  sci = Atoli
+Note that the Gragg-Bulirsch-Stoer integrator uses the good implementation "sci = Atol i + |y0i| * Rtoli  " when he performs the call to the same method initializeStep(..)
+In the method initializeStep, the error leads to a wrong step size h used to perform an  Euler step. Most of the time it is unvisible for the user.
+But in my space application the Euler step with this wrong step size h (much bigger than it should be)  makes an exception occur (my satellite hits the ground...)
+To fix the bug, one should use the same algorithm as in the rescale method in GraggBulirschStoerIntegrator
+For exemple :
+ final double[] scale= new double[y0.length];;
+          if (vecAbsoluteTolerance == null) {
+              for (int i = 0; i < scale.length; ++i) 
+{
+                final double yi = Math.max(Math.abs(y0[i]), Math.abs(y0[i]));
+                scale[i] = scalAbsoluteTolerance + scalRelativeTolerance * yi;
+              }
+            } else {
+              for (int i = 0; i < scale.length; ++i) 
+{
+                final double yi = Math.max(Math.abs(y0[i]), Math.abs(y0[i]));
+                scale[i] = vecAbsoluteTolerance[i] + vecRelativeTolerance[i] * yi;
+              }
+            }
+          hNew = initializeStep(equations, forward, getOrder(), scale,
+                           stepStart, y, yDotK[0], yTmp, yDotK[1]);
+Sorry for the length of this message, looking forward to hearing from you soon
+Vincent Morand
+

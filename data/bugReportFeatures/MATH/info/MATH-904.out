@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nAs reported by Jeff Hain:\npow(double,double):\nMath.pow(-1.0,5.000000000000001E15) = -1.0\nFastMath.pow(-1.0,5.000000000000001E15) = 1.0\n===> This is due to considering that power is an even\ninteger if it is >= 2^52, while you need to test\nthat it is >= 2^53 for it.\n===> replace\n\"if (y >= TWO_POWER_52 || y <= -TWO_POWER_52)\"\nwith\n\"if (y >= 2*TWO_POWER_52 || y <= -2*TWO_POWER_52)\"\nand that solves it.\n\n", 
+	"remain":"\n\nAs reported by Jeff Hain:\npow(double,double):\nMath.pow(-1.0,5.000000000000001E15) = -1.0\nFastMath.pow(-1.0,5.000000000000001E15) = 1.0\n===> This is due to considering that power is an even\ninteger if it is >= 2^52, while you need to test\nthat it is >= 2^53 for it.\n===> replace\n\"if (y >= TWO_POWER_52 || y <= -TWO_POWER_52)\"\nwith\n\"if (y >= 2*TWO_POWER_52 || y <= -2*TWO_POWER_52)\"\nand that solves it.\n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

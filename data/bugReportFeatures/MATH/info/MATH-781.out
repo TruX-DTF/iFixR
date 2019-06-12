@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nMethode SimplexSolver.optimeze(...) gives bad results with commons-math3-3.0\nin a simple test problem. It works well in commons-math-2.2. \n\n", 
+	"remain":"\n\nMethode SimplexSolver.optimeze(...) gives bad results with commons-math3-3.0\nin a simple test problem. It works well in commons-math-2.2. \n\n", 
+	"source":"", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

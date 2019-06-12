@@ -1,0 +1,19 @@
+
+
+Can be replicated in the Android emulator quite easily.
+Stack trace:
+
+
+at org.apache.commons.lang.builder.ToStringBuilder.<clinit>(ToStringBuilder.java:98)
+E/AndroidRuntime( 1681): 	... 17 more
+E/AndroidRuntime( 1681): Caused by: java.lang.ExceptionInInitializerError
+E/AndroidRuntime( 1681): 	at org.apache.commons.lang.builder.ToStringStyle$MultiLineToStringStyle.<init>(ToStringStyle.java:2276)
+E/AndroidRuntime( 1681): 	at org.apache.commons.lang.builder.ToStringStyle.<clinit>(ToStringStyle.java:94)
+E/AndroidRuntime( 1681): 	... 18 more
+E/AndroidRuntime( 1681): Caused by: java.lang.StringIndexOutOfBoundsException
+E/AndroidRuntime( 1681): 	at java.lang.String.substring(String.java:1571)
+E/AndroidRuntime( 1681): 	at org.apache.commons.lang.SystemUtils.getJavaVersionAsFloat(SystemUtils.java:1153)
+E/AndroidRuntime( 1681): 	at org.apache.commons.lang.SystemUtils.<clinit>(SystemUtils.java:818)
+
+
+

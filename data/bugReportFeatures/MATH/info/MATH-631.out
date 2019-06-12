@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe following unit test:\n\n@Test\npublic void testBug() {\n    final UnivariateRealFunction f = new UnivariateRealFunction() {\n            @Override\n            public double value(double x) {\n                return Math.exp(x) - Math.pow(Math.PI, 3.0);\n            }\n        };\n\n    UnivariateRealSolver solver = new RegulaFalsiSolver();\n    double root = solver.solve(100, f, 1, 10);\n}\n\n\nfails with\n\nillegal state: maximal count (100) exceeded: evaluations\n\n\nUsing \"PegasusSolver\", the answer is found after 17 evaluations.\n\n", 
+	"remain":"\n\nThe following unit test:\n\n@Test\n            @Override\n                return Math.exp(x) - Math.pow(Math.PI, 3.0);\n        };\n\n    double root = solver.solve(100, f, 1, 10);\n\n\nfails with\n\nillegal state: maximal count (100) exceeded: evaluations\n\n\nUsing \"PegasusSolver\", the answer is found after 17 evaluations.\n", 
+	"source":"public void testBug() {\n    final UnivariateRealFunction f = new UnivariateRealFunction() {\n            @Override\n            public double value(double x) {\n                return Math.exp(x) - Math.pow(Math.PI, 3.0);\n            }\n        };\n\n    UnivariateRealSolver solver = new RegulaFalsiSolver();\n    double root = solver.solve(100, f, 1, 10);\n}", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

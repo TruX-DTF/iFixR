@@ -1,0 +1,5 @@
+
+
+The thread local in org.apache.commons.lang3.builder.ToStringStyle is created but never removed and no API is provided to remove it. If a webapp's use of LANG triggers the loading of this class, a reference chain will be created that will cause a memory leak on web application reload.
+See http://markmail.org/thread/uetw2fdrsqgbh2cv for more info.
+

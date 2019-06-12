@@ -1,0 +1,44 @@
+
+
+Probably due to rounding errors, MathUtils.binomialCoefficient(n,k) fails for results near Long.MAX_VALUE.
+The existence of failures can be demonstrated by testing the recursive property:
+
+         assertEquals(MathUtils.binomialCoefficient(65,32) + MathUtils.binomialCoefficient(65,33),
+                 MathUtils.binomialCoefficient(66,33));
+
+
+Or by directly using the (externally calculated and hopefully correct) expected value:
+
+         assertEquals(7219428434016265740L, MathUtils.binomialCoefficient(66,33));
+
+
+I suggest a nonrecursive test implementation along the lines of
+MathUtilsTest.java
+    /**
+     * Exact implementation using BigInteger and the explicit formula
+     * (n, k) == ((k-1)*...*n) / (1*...*(n-k))
+     */
+	public static long binomialCoefficient(int n, int k) {
+		if (k == 0 || k == n)
+			return 1;
+		BigInteger result = BigInteger.ONE;
+		for (int i = k + 1; i <= n; i++) {
+			result = result.multiply(BigInteger.valueOf(i));
+		}
+		for (int i = 1; i <= n - k; i++) {
+			result = result.divide(BigInteger.valueOf(i));
+		}
+		if (result.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0) {
+			throw new ArithmeticException(
+                                "Binomial coefficient overflow: " + n + ", " + k);
+		}
+		return result.longValue();
+	}
+
+
+Which would allow you to test the expected values directly:
+
+         assertEquals(binomialCoefficient(66,33), MathUtils.binomialCoefficient(66,33));
+
+
+

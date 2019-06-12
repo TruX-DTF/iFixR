@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nThe result of MathUtils.factorial( n ) for n = 17, 18, 19 is wrong, probably because of rounding errors in the double calculations.\nReplace the first line of MathUtilsTest.testFactorial() by\n        for (int i = 1; i <= 20; i++) {\nto check all valid arguments for the long result and see the failure.\nI suggest implementing a simple loop to multiply the long result - or even using a precomputed long[] - instead of adding logarithms.\n\n", 
+	"remain":"\n\nThe result of MathUtils.factorial( n ) for n = 17, 18, 19 is wrong, probably because of rounding errors in the double calculations.\nReplace the first line of MathUtilsTest.testFactorial() by\nto check all valid arguments for the long result and see the failure.\nI suggest implementing a simple loop to multiply the long result - or even using a precomputed long[] - instead of adding logarithms.\n", 
+	"source":"for (int i = 1; i <= 20; i++) {", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}

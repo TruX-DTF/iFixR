@@ -1,0 +1,7 @@
+{
+	"desc":"\n\nIn commons-lang 2.6 line 250 :\n\nch = chars[random.nextInt(gap) + start];\n\nThis line of code takes a random int to fetch a char in the chars array regardless of its size.\n(Besides start is useless here)\nFixed version would be :\n\n//ch = chars[random.nextInt(gap)%chars.length];\n\nWhen user pass 0 as end or when the array is not null but empty this line ends up with an exception\n\n", 
+	"remain":"\n\nIn commons-lang 2.6 line 250 :\n\n\nThis line of code takes a random int to fetch a char in the chars array regardless of its size.\n(Besides start is useless here)\nFixed version would be :\n\n\nWhen user pass 0 as end or when the array is not null but empty this line ends up with an exception\n", 
+	"source":"ch = chars[random.nextInt(gap) + start];\n\n//ch = chars[random.nextInt(gap)%chars.length];", 
+	"talks":"", 
+	"traces":[], 
+	"enums":[]}
