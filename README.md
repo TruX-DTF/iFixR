@@ -193,6 +193,8 @@
       
         Example: bash startPy.sh /home/user/mimic gv ALL
     ```
+    
+    Generated patches are placed in directory [OUTPUT](OUTPUT/MIMIC/)
 
 
 
