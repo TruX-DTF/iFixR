@@ -10,11 +10,11 @@ parsedFiles/
 bugPoints/
 *.zip
 simi/
-simiSingle/
+
 code/Results_Multiple.xlsx
 code/Results_Single.xlsx
 datasets/
-features/
+
 featuresOld2/
 featuresOld/
 
@@ -30,7 +30,7 @@ code/dtmMulti/
 code/bugReports/
 code/bugPointsNV/
 *.7z
-classifiers/
+
 predictions/
 *.log
 code/allResults*

@@ -126,7 +126,7 @@ if __name__ == '__main__':
 
         elif job =='gv':
             from generateValidate import launchGV
-            launchGV()
+            launchGV(args.subject)
 
 
 

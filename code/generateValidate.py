@@ -9,25 +9,35 @@ D4JHOME = os.environ["D4JHOME"]
 
 
 
-def launchGV():
-    projects = [('Math', 106), ('Lang', 65)]
+def launchGV(subject):
+    if subject == 'ALL':
+        cmd = 'bash ' + join(ROOT_DIR, 'testProjects.sh') + ' ' + DEFECTS4J
+        logging.info('Compiling  defects4j bugs')
+        o = shellCallTemplate(cmd)
 
-    workList = []
-    for p in projects:
-        pjName, iterSize = p
+        projects = [('Math', 106), ('Lang', 65)]
 
-        for idx in range(iterSize):
-            idx = idx + 1
-            workList.append(pjName + '_' + str(idx))
+        workList = []
+        for p in projects:
+            pjName, iterSize = p
 
-    parallelRun(gvCore,workList)
+            for idx in range(iterSize):
+                idx = idx + 1
+                workList.append(pjName + '_' + str(idx))
+
+        parallelRun(gvCore,workList)
+    else:
+        cmd = 'bash ' + join(ROOT_DIR, 'testProject.sh') + ' ' + DEFECTS4J +' ' + subject
+        logging.info('Compiling  defects4j bugs')
+        o = shellCallTemplate(cmd)
+        gvCore(subject)
     # print(workList[0])
     # gvCore('Math_34')
 
 
 def gvCore(pj):
 
-    cmd = "java -jar "+join(DATA_PATH,'mimicGV.jar') \
+    cmd = "JAVA_HOME='"+jdk7+"' java -jar "+join(DATA_PATH,'mimicGV.jar') \
           + " "+ join(DATA_PATH,'defects4jFailedTestCases/') \
           + " " + join(DATA_PATH,'stmtLoc') \
           +" " + join(DEFECTS4J)\

@@ -23,6 +23,16 @@
 * OS: macOS Mojave (10.14.3)
 * JDK7: Oracle jdk1.7 (**important!**)
 * JDK8: Oracle jdk1.8 (**important!**)
+* Defects4J: Clone and configure [defects4j](https://github.com/rjust/defects4j) from its original repository
+  ```powershell
+  git clone https://github.com/rjust/defects4j
+  cd defects4j
+  ./init.sh
+
+  export PATH=$PATH:"path2defects4j"/framework/bin
+  
+  Please add defects4j also to path since compileProjects.sh,createProjects.sh,testProjects.sh uses defects4j
+  ```
 * Download and configure Anaconda
 * Create an python environment using the [environment file](environment.yml)
   ```powershell
@@ -37,11 +47,11 @@
 #### Before running
 
 * Update [config file](config.yml) with corresponding user paths.
-
-* Active the conda environment from shell
   ```powershell
-  source activate python36
+  Defects4J home path requires '/' at the end
+  Example: /Users/projects/defects4j/
   ```
+
 * Launch [startPy](startPy.sh) as follows:
 
   ```powershell
@@ -52,47 +62,139 @@
 
 *IFixR* needs **three** input options for running.
 
-* `--root ` : The full path of directory where startPy.sh is localted
-
-* `--subject` : the project name of buggy program of benchmark. (`MATH,LANG,ALL` are expected values)
-
-* `--job` : the name of the job in the pipeline , supports multiple steps which needs to executed in order:
-
-    `clone` : Clone target project repository.
-
-    `collect` : Collect all commit from repository.
-
-    `fix` : Collect commits linked to a bug report.
-
-    `bugPoints` : Identify the snapshot of the repository before the bug fixing commit introducted.
-
-    `brDownload` : Download bug reports recovered from commit log
-
-    `brParser` : Parse bug reports to select the bug report where type labelled as BUG and status as RESOLVED or CLOSED
-
-    `brFeatures` : Extract bug report features
-
-    `verify` : Extract source code features
-
-    `simi` :  Compute the similarity between bug reports and source code features
-
-    `predict` :  Predict file level bug localization
-
-    `eval` :  Retrieve predictions for all bug reports and suspiciousness scores of files.
-
-    `stmt` :  Compute statement level bug localization
-
-    `gv` :  Execute generate-validation step to produce patch candidates.
-
-
   ```powershell
   Usage: bash startPy.sh $1 $2 $3
   where $1 is root
         $2 is job
         $3 is subject
-  Example: bash startPy.sh /home/user/mimic clone MATH
-  Another: bash startPy.sh /home/user/mimic gv MATH
   ```
+
+* `root ` : The full path of directory where startPy.sh is located
+
+* `subject` : the project name of buggy program of benchmark. (`MATH,LANG` are expected values but can be specific for job)
+
+* `job` : the name of the job in the pipeline , supports multiple steps which needs to executed in order:
+
+    `1.clone` : Clone target project repository.
+    
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic clone MATH
+      Example: bash startPy.sh /home/user/mimic clone LANG
+    ```
+
+    `2.collect` : Collect all commit from repository.
+    
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic collect MATH
+      Example: bash startPy.sh /home/user/mimic collect LANG
+    ```
+
+    `3.fix` : Collect commits linked to a bug report.
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic fix MATH
+      Example: bash startPy.sh /home/user/mimic fix LANG
+    ```
+
+
+    `4.bugPoints` : Identify the snapshot of the repository before the bug fixing commit introduced.
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic bugPoints MATH
+      Example: bash startPy.sh /home/user/mimic bugPoints LANG
+    ```
+
+
+    `5.brDownload` : Download bug reports recovered from commit log
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic brDownload MATH
+      Example: bash startPy.sh /home/user/mimic brDownload LANG
+    ```
+
+
+    `6.brParser` : Parse bug reports to select the bug report where type labeled as BUG and status as RESOLVED or CLOSED
+    
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic brParser MATH
+      Example: bash startPy.sh /home/user/mimic brParser LANG
+    ```
+
+    `7.brFeatures` : Extract bug report features
+    
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic brFeatures MATH
+      Example: bash startPy.sh /home/user/mimic brFeatures LANG
+    ```
+
+
+    `8.verify` : Extract source code features
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic verify MATH
+      Example: bash startPy.sh /home/user/mimic verify LANG
+    ```
+
+
+    `9.simi` :  Compute the similarity between bug reports and source code features
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic simi MATH
+      Example: bash startPy.sh /home/user/mimic simi LANG
+    ```
+
+
+    `10.features` :  Compute the features from similarity scores
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic features MATH
+      Example: bash startPy.sh /home/user/mimic features LANG
+    ```
+
+
+    `11.predict` :  Predict file level bug localization
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic predict ALL
+    ```
+
+
+    `12.eval` :  Retrieve predictions for all bug reports and suspiciousness scores of files.
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic eval ALL
+    ```
+
+
+    `13.stmt` :  Compute statement level bug localization
+    
+        
+    ```powershell   
+      Example: bash startPy.sh /home/user/mimic stmt ALL (!!! Clones all defects4j bugs and compile, may take significant amount of time)
+    ```
+
+
+    `14.gv` :  Execute generate-validation step to produce patch candidates.   
+    
+        
+    ```powershell  
+      Execute generate-validation step on a single defects4j bug (eg Lang_15, Math_34 case sensitive)
+      
+        Example: bash startPy.sh /home/user/mimic gv Math_34
+      
+      Execute generate-validation step on all dataset. (!!! Takes significant amount of time !!!)
+      
+        Example: bash startPy.sh /home/user/mimic gv ALL
+    ```
+
+
 
 
 

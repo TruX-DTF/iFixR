@@ -20,9 +20,9 @@ def getLast(bugID):
         sourceDF = load_zipped_pickle(join(COMMIT_DFS, repo + '.pickle'))
         sourceDF['fix'] = sourceDF['fix'].apply(lambda x: x.strip() if not x is None else x)
         aDf = sourceDF[sourceDF.fix == bugID]
-        if len(aDf > 0):
+        if len(aDf) > 0:
             dateCheck = aDf.sort_values('commitDate').iloc[0].commitDate
-            filtered = sourceDF.query("commitDate < '{0}'".format(dateCheck ))
+            filtered = sourceDF[sourceDF.commitDate < dateCheck ]
             filtered['dateCheck'] = dateCheck
             filtered = filtered.head(1)
             save_zipped_pickle(filtered,join(BUG_POINT,bugID + ".pickle"))

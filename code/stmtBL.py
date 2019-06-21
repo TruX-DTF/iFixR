@@ -63,8 +63,8 @@ def locationsCore(t,filter=50):
         locs.reset_index(inplace=True)
         locs[['bugReport', 'filename', 'prob', 'locations']].to_csv(join(DATA_PATH, 'stmtLoc', defects4jbug))
     except Exception as e:
-        print(t)
-        logging.error(e)
+
+        logging.warn(e)
 
 def getStmtLevelBL(filter = 50):
 
@@ -74,9 +74,11 @@ def getStmtLevelBL(filter = 50):
     if not os.path.exists(DEFECTS4J):
         os.mkdir(DEFECTS4J)
 
-        cmd = 'bash ' + join(ROOT_DIR,'createProjects.sh') + ' ' + DEFECTS4J
-        logging.info('Checking out defects4j bugs')
-        o = shellCallTemplate(cmd)
+    cmd = 'bash ' + join(ROOT_DIR,'createProjects.sh') + ' ' + DEFECTS4J
+    logging.info('Checking out defects4j bugs')
+    o = shellCallTemplate(cmd)
+
+
 
     projects = [('Math', 106), ('Lang', 65)]  # , ('Closure', 133)]
     results = [i for i in listdir(join(DATA_PATH, 'singlePred')) if i.startswith('finalmultic_')]

@@ -142,7 +142,7 @@ def shellCallTemplate(cmd,enc='utf-8'):
                     raise CalledProcessError(errors, '-1')
             output
     except CalledProcessError as e:
-        logging.error(errors)
+        logging.warning(errors)
     return output
 
 def shellGitCheckout(cmd,enc='utf-8'):
@@ -154,7 +154,7 @@ def shellGitCheckout(cmd,enc='utf-8'):
                 raise CalledProcessError(errors, '-1')
             output
     except CalledProcessError as e:
-        logging.error(errors)
+        logging.warning(errors)
     return output,errors
 
 def save_zipped_pickle(obj, filename, protocol=-1):
