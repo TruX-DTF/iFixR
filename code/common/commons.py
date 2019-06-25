@@ -258,7 +258,7 @@ def parallelRunNo(coreFun,elements,*args):
             raise
 
 def parallelRun(coreFun,elements,*args):
-    with concurrent.futures.ProcessPoolExecutor() as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=2) as executor:
         try:
             futures = {executor.submit(coreFun, l,*args): l for l in elements}
             for future in concurrent.futures.as_completed(futures):

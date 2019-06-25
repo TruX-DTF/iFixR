@@ -20,6 +20,7 @@
 
 ## II. Environment
 
+#### Manual installation
 * OS: macOS Mojave (10.14.3)
 * JDK7: Oracle jdk1.7 (**important!**)
 * JDK8: Oracle jdk1.8 (**important!**)
@@ -39,11 +40,6 @@
   conda env create -f environment.yml
   ```
 
-
-
-
-## III. How to run
-
 #### Before running
 
 * Update [config file](config.yml) with corresponding user paths.
@@ -51,6 +47,26 @@
   Defects4J home path requires '/' at the end
   Example: /Users/projects/defects4j/
   ```
+
+#### Docker
+
+* Clone the repository
+
+* Pull image from docker hub
+  ```powershell
+  docker pull anilkoyuncu/ifixr
+  ```
+
+* Run the docker image sharing the repository folder
+  ```powershell
+  docker run -v /Users/anil.koyuncu/projects/BugReportDrivenProgramRepair/:/data -it anilkoyuncu/ifixr:latest /bin/bash
+  ```
+
+* Change folder to /data
+
+* Follow Step III to run
+
+## III. How to run
 
 * Launch [startPy](startPy.sh) as follows:
 

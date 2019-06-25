@@ -67,7 +67,7 @@ def parserCore(f):
     try:
         # text = load_textfile(f)
         # parseDict = parse(text)
-        cmd = "JAVA_HOME='"+jdk8+"' java -jar "+join(CODE_PATH, 'JavaCodeParser.jar ')  + f
+        cmd = "JAVA_HOME='"+jdk8+"' "+join(jdk8,'bin','java')+" -jar "+join(CODE_PATH, 'JavaCodeParser.jar ')  + f
         output = shellCallTemplate(cmd)
         parseDict = eval(output)
 

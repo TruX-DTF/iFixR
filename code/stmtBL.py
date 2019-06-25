@@ -29,10 +29,11 @@ def locationsCore(t,filter=50):
             cmd = "git -C " + path + " checkout -- ."
             output, err = shellGitCheckout(cmd)
 
-            cmd = "JAVA_HOME='"+jdk8+"' java -jar " + join(
+            cmd = "JAVA_HOME='"+jdk8+"' "+join(jdk8,'bin','java')+" -jar " + join(
                 CODE_PATH,
                 'JavaCodeParserWithRanges.jar ') + join(path,
                                                         fileName)
+            print(cmd)
             output = shellCallTemplate(cmd)
             parseDict = eval(output)
             names = list(parseDict.keys())
@@ -74,9 +75,9 @@ def getStmtLevelBL(filter = 50):
     if not os.path.exists(DEFECTS4J):
         os.mkdir(DEFECTS4J)
 
-    cmd = 'bash ' + join(ROOT_DIR,'createProjects.sh') + ' ' + DEFECTS4J
-    logging.info('Checking out defects4j bugs')
-    o = shellCallTemplate(cmd)
+        cmd = 'bash ' + join(ROOT_DIR,'createProjects.sh') + ' ' + DEFECTS4J
+        logging.info('Checking out defects4j bugs')
+        o = shellCallTemplate(cmd)
 
 
 
@@ -98,7 +99,8 @@ def getStmtLevelBL(filter = 50):
                 t = 'finalmultic_' + str(issue), pjName + '_' + str(idx)
                 workList.append(t)
     # workList = [('finalmultic_LANG-59', 'Lang_65')]
-
+    #for wl in workList:
+    #    locationsCore(wl,filter)
     parallelRun(locationsCore, workList,filter)
 
 def evalStmtBL():
