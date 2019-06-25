@@ -59,7 +59,7 @@
 
 * Run the docker image sharing the repository folder
   ```powershell
-  docker run -v /Users/anil.koyuncu/projects/BugReportDrivenProgramRepair/:/data -it anilkoyuncu/ifixr:latest /bin/bash
+  docker run -v <path_of_cloned_repository>/:/data -it anilkoyuncu/ifixr:latest /bin/bash
   ```
 
 * Change folder to /data
@@ -85,7 +85,7 @@
         $3 is subject
   ```
 
-* `root ` : The full path of directory where startPy.sh is located
+* `root ` : The full path of directory where startPy.sh is located (corresponds to pwd in the examples below)
 
 * `subject` : the project name of buggy program of benchmark. (`MATH,LANG` are expected values but can be specific for job)
 
@@ -94,22 +94,22 @@
     `1.clone` : Clone target project repository.
     
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic clone MATH
-      Example: bash startPy.sh /home/user/mimic clone LANG
+      Example: bash startPy.sh pwd clone MATH
+      Example: bash startPy.sh pwd clone LANG
     ```
 
     `2.collect` : Collect all commit from repository.
     
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic collect MATH
-      Example: bash startPy.sh /home/user/mimic collect LANG
+      Example: bash startPy.sh pwd collect MATH
+      Example: bash startPy.sh pwd collect LANG
     ```
 
     `3.fix` : Collect commits linked to a bug report.
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic fix MATH
-      Example: bash startPy.sh /home/user/mimic fix LANG
+      Example: bash startPy.sh pwd fix MATH
+      Example: bash startPy.sh pwd fix LANG
     ```
 
 
@@ -117,8 +117,8 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic bugPoints MATH
-      Example: bash startPy.sh /home/user/mimic bugPoints LANG
+      Example: bash startPy.sh pwd bugPoints MATH
+      Example: bash startPy.sh pwd bugPoints LANG
     ```
 
 
@@ -126,23 +126,23 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic brDownload MATH
-      Example: bash startPy.sh /home/user/mimic brDownload LANG
+      Example: bash startPy.sh pwd brDownload MATH
+      Example: bash startPy.sh pwd brDownload LANG
     ```
 
 
     `6.brParser` : Parse bug reports to select the bug report where type labeled as BUG and status as RESOLVED or CLOSED
     
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic brParser MATH
-      Example: bash startPy.sh /home/user/mimic brParser LANG
+      Example: bash startPy.sh pwd brParser MATH
+      Example: bash startPy.sh pwd brParser LANG
     ```
 
     `7.brFeatures` : Extract bug report features
     
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic brFeatures MATH
-      Example: bash startPy.sh /home/user/mimic brFeatures LANG
+      Example: bash startPy.sh pwd brFeatures MATH
+      Example: bash startPy.sh pwd brFeatures LANG
     ```
 
 
@@ -150,8 +150,8 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic verify MATH
-      Example: bash startPy.sh /home/user/mimic verify LANG
+      Example: bash startPy.sh pwd verify MATH
+      Example: bash startPy.sh pwd verify LANG
     ```
 
 
@@ -159,8 +159,8 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic simi MATH
-      Example: bash startPy.sh /home/user/mimic simi LANG
+      Example: bash startPy.sh pwd simi MATH
+      Example: bash startPy.sh pwd simi LANG
     ```
 
 
@@ -168,8 +168,8 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic features MATH
-      Example: bash startPy.sh /home/user/mimic features LANG
+      Example: bash startPy.sh pwd features MATH
+      Example: bash startPy.sh pwd features LANG
     ```
 
 
@@ -177,7 +177,7 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic predict ALL
+      Example: bash startPy.sh pwd predict ALL
     ```
 
 
@@ -185,7 +185,7 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic eval ALL
+      Example: bash startPy.sh pwd eval ALL
     ```
 
 
@@ -193,7 +193,7 @@
     
         
     ```powershell   
-      Example: bash startPy.sh /home/user/mimic stmt ALL (!!! Clones all defects4j bugs and compile, may take significant amount of time)
+      Example: bash startPy.sh pwd stmt ALL (!!! Clones all defects4j bugs and compile, may take significant amount of time)
     ```
 
 
@@ -203,11 +203,11 @@
     ```powershell  
       Execute generate-validation step on a single defects4j bug (eg Lang_15, Math_34 case sensitive)
       
-        Example: bash startPy.sh /home/user/mimic gv Math_34
+        Example: bash startPy.sh pwd gv Math_34
       
       Execute generate-validation step on all dataset. (!!! Takes significant amount of time !!!)
       
-        Example: bash startPy.sh /home/user/mimic gv ALL
+        Example: bash startPy.sh pwd gv ALL
     ```
     
     Generated patches are placed in directory [OUTPUT](OUTPUT/MIMIC/)
