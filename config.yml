@@ -1,5 +1,5 @@
 java:
-    7home:  /data/jdk1.7.0_80
-    8home:  /data/jdk1.8.0_202
+    7home:  /opt/jdk1.7.0_80
+    8home:  /opt/jdk1.8.0_202
 defects4j:
     home:  /data/defects4j/
