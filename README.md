@@ -1,6 +1,5 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3257172.svg)](https://doi.org/10.5281/zenodo.3257172)
-[![DOI](https://data.caltech.edu/badge/110025475.svg)](https://data.caltech.edu/badge/latestdoi/110025475)
 # IFixR
 
 * [I. Introduction of IFixR](#user-content-i-introduction)
