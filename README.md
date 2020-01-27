@@ -2,6 +2,21 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3257172.svg)](https://doi.org/10.5281/zenodo.3257172)
 # IFixR
 
+*IFixR* a patch generation system for user-reported bugs, described in "[iFixR: Bug Report driven Program Repair](http://arxiv.org/pdf/1907.05620)", In Foundations of Software Engineering, 2019. 
+
+```bibtex
+@inproceedings{arXiv-1907.05620,
+ title = {iFixR: Bug Report driven Program Repair},
+ author = {Anil Koyuncu and Kui Liu and Tegawendé F. Bissyandé and Dongsun Kim and Martin Monperrus and Jacques Klein and Yves Le Traon},
+ booktitle = {Proceedings of the 27th ACM Joint Meeting on European Software
+  Engineering Conference and Symposium on the Foundations of Software
+  Engineering},
+ year = {2019},
+ doi = {10.1145/3338906.3338935},
+ url = {http://arxiv.org/pdf/1907.05620},
+}
+```
+
 * [I. Introduction of IFixR](#user-content-i-introduction)
 * [II. Environment setup](#user-content-ii-environment)
 * [III. Run Step-by-Step](#user-content-iii-how-to-run)
@@ -9,9 +24,7 @@
 * [V. Generated Patches](#user-content-v-generated-patches)
 * [VI. Structure of the project](#user-content-vi-structure-of-the-project)
 
-## I. Introduction
 
-*IFixR* a patch generation system for user-reported bugs
 
 ![The workflow of this technique.\label{workflow}](docs/figures.png)
 
